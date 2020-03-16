@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Just a very simple portfolio blog to get the first week started in style. You've gotta know how to make the Rails Hello World calling card application, right?
 
-Things you may want to cover:
+Utilizes Action Text, Active Storage, Remote Forms, and some gems
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Setup Instructions
+  In the termain:
+  '''
+  rails db:migrate && rails db:seed && rails s
+  '''
