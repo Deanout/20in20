@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :posts
+  
+  resources :posts do
+    resources :comments, only: [:create, :destroy]
+  end
   get '/blog', to: 'posts#index'
   devise_for :users
   root 'posts#index'

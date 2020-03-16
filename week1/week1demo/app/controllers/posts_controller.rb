@@ -14,6 +14,8 @@ class PostsController < ApplicationController
   def show
     views = @post.views + 1
     @post.update(views: views)
+    @comment = Comment.new
+    @comments = @post.comments.order("created_at DESC")
   end
 
   # GET /posts/new

@@ -19,3 +19,18 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+<div class="container">
+<%= form_with model: [@post, @comment] do |f| %> 
+<%= f.text_area :body, class:'form-control', placeholder:'Say something...' %> 
+<%= f.submit "Comment", class:'btn btn-primary float-right' %> 
+<% end %> 
+</div>
+</div>
+
+<div id="comment_pane">
+<% @comments.each do |comment| %> 
+<%= render 'comments/comment', comment: comment %>
+<% end %>
+</div>

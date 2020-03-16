@@ -1,0 +1,12 @@
+<div class="row" id="comment-<%= comment.id %>">
+<div class="container">
+<div class="jumbotron">
+[<%=comment.created_at.strftime("%I:%M %p") %>]
+ <%= comment.user.username %>
+ <hr>
+
+ <%= comment.body %>
+ <% if current_user && (current_user == comment.user || current_user.admin) %>
+ <%= link_to "Delete", post_comment_path(@post, comment), class:'btn btn-danger float-right', method: :delete, remote: true %>
+ <% end %>
+</div></div></div>
