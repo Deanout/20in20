@@ -1,0 +1,589 @@
+Step 1 - Bootstrap
+# in terminal
+yarn add bootstrap jquery popper.js
+
+#in config/webpack/env.js
+const { environment } = require('@rails/webpacker')
+
+const webpack = require('webpack')
+environment.plugins.append('Provide', new webpack.ProvidePlugin({
+  $: 'jquery',
+  jQuery: 'jquery',
+  Popper: ['popper.js', 'default']
+}))
+
+module.exports = environment
+
+#in app/javascript/packs/app.js
+import 'bootstrap'
+import './src/application.scss'
+
+in app/javascript/packs/src create application.scss
+@import "~bootstrap/scss/bootstrap";
+
+Step 2
+# in terminal
+rails g controller pages about
+
+# app/views/pages/about.html.erb
+<div class="container jumbotron">
+<div class="row">
+<h1>About Dean</h1>
+<hr class="my-4" />
+</div>
+<div class="row">
+<p style="text-align:justify">
+Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Cursus euismod quis viverra nibh cras. Blandit volutpat maecenas volutpat blandit aliquam etiam. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget. Adipiscing elit pellentesque habitant morbi. Tellus at urna condimentum mattis pellentesque id. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Tellus id interdum velit laoreet id donec ultrices tincidunt arcu. Laoreet id donec ultrices tincidunt arcu non sodales neque. Consectetur libero id faucibus nisl tincidunt eget nullam non nisi. Ullamcorper morbi tincidunt ornare massa eget egestas. Cras tincidunt lobortis feugiat vivamus. Neque laoreet suspendisse interdum consectetur libero.
+<br>
+<br>
+Tincidunt arcu non sodales neque sodales. Ornare arcu dui vivamus arcu felis bibendum. Nunc congue nisi vitae suscipit tellus mauris a diam. Mi eget mauris pharetra et ultrices neque ornare aenean euismod. Tellus id interdum velit laoreet. Cursus metus aliquam eleifend mi in nulla. Blandit libero volutpat sed cras ornare arcu. Cras adipiscing enim eu turpis egestas pretium aenean. Pharetra massa massa ultricies mi. Enim facilisis gravida neque convallis a cras semper auctor neque. Pulvinar elementum integer enim neque volutpat. Nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum.
+</p>
+<hr class="my-4" />
+</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+<button type="button" class="btn btn-secondary" onclick="window.location.href = 'https://github.com/deanout';">GitHub</button>
+  <button type="button" class="btn btn-secondary" onclick="window.location.href = 'https://instagram.com/deaniocom';">Instagram</button>
+  <button type="button" class="btn btn-secondary" onclick="window.location.href = 'https://twitter.com/deaniocom';">Twitter</button>
+  <button type="button" class="btn btn-secondary" onclick="window.location.href = 'https://youtube.com/deanin';">YouTube</button>
+
+</div>
+
+</div>
+
+
+
+Step 3 Devise
+# in Gemfile
+gem 'devise'
+gem 'simple_form'
+# in terminal
+bundle
+rails g devise:install
+rails g devise user
+rails g devise:views
+rails g simple_form:install --bootstrap
+rails db:migrate
+rails s
+
+# in app/views/layouts
+create '_navbar.html.erb'
+#in app/views/layouts/application.html.erb
+
+...
+<%= render 'layouts/navbar' %>
+<%= yield %>
+...
+
+# in app/models/user.rb
+def username
+	return self.email.split('@')[0].capitalize
+end
+
+# in app/views/layouts/_navbar.html.erb
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%= root_path %>">Dean's Blog</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "Home", root_path, class:'nav-link' %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "About", about_path, class:'nav-link' %>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <% if current_user %>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <%= current_user.username %>
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right"
+          aria-labelledby="navbarDropdown"
+        >
+          <% if current_user.admin %> <%= link_to "New Post", new_post_path,
+          class:'dropdown-item' %> <% end %> <%= link_to "Account Settings",
+          edit_user_registration_path, class:'dropdown-item' %>
+          <div class="dropdown-divider"></div>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete,
+          class:'dropdown-item' %>
+        </div>
+      </li>
+      <% else %>
+
+      <li class="nav-item">
+        <%= link_to "Sign In", new_user_session_path, class:'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sign Up", new_user_registration_path, class:'nav-link' %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+
+
+# routes.rb
+...
+get 'about', to: 'pages#about
+
+# in terminal
+rails g migration add_admin_to_user admin:boolean
+# in migration file
+    add_column :users, :admin, :boolean, default: false
+# in terminal
+rails db:migrate
+rails s
+
+Step 4
+# in terminal
+rails g scaffold post title views:integer user:references
+# in db migration
+t.integer :views, default: 0
+
+# Delete scaffold.scss from app/assets/stylesheets to remove the awful outlines
+# in terminal
+rails active_storage:install
+rails db:migrate
+# in routes
+Rails.application.routes.draw do
+  resources :posts
+  get '/blog', to: 'posts#index'
+  devise_for :users
+  root 'posts#index'
+  get 'about', to: 'pages#about'
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+end
+
+# In post.rb
+class Post < ApplicationRecord
+  belongs_to :user
+  has_one_attached :thumbnail
+  has_one_attached :banner
+  has_rich_text :body
+  validates :title, length: {minimum: 5}
+  validates :body, length: {minimum: 25}
+  
+  def optimized_image (image, x,y)
+    return image.variant(resize_to_fill: [x, y]).processed
+  end
+end
+
+# in application controller
+class ApplicationController < ActionController::Base
+    helper_method :is_admin?
+    helper_method :is_admin!
+    private
+    def is_admin?
+        if current_user
+            return current_user.admin
+        else
+            return false
+        end
+    end
+    def is_admin!
+        if current_user && current_user.admin
+        else
+            redirect_to root_path
+        end
+    end
+end
+
+
+# In post controller
+class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :is_admin!, except: [:index, :show]
+
+  # GET /posts
+  # GET /posts.json
+  def index
+    @posts = Post.all
+  end
+
+  # GET /posts/1
+  # GET /posts/1.json
+  def show
+    views = @post.views + 1
+    @post.update(views: views)
+  end
+
+  # GET /posts/new
+  def new
+    @post = Post.new
+  end
+
+  # GET /posts/1/edit
+  def edit
+  end
+
+  # POST /posts
+  # POST /posts.json
+  def create
+    @post = Post.new(post_params)
+    @post.user = current_user
+
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: @post }
+      else
+        format.html { render :new }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /posts/1
+  # PATCH/PUT /posts/1.json
+  def update
+    respond_to do |format|
+      if @post.update(post_params)
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        format.html { render :edit }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /posts/1
+  # DELETE /posts/1.json
+  def destroy
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_post
+      @post = Post.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def post_params
+      params.require(:post).permit(:title, :body, :thumbnail, :banner)
+    end
+end
+
+
+
+# In Post form
+
+<%= simple_form_for(@post) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :body %>
+    <%= f.input :thumbnail %>
+    <%= f.input :banner %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+# post index
+
+# gemfile
+uncomment gem 'image_processing'
+
+# terminal
+bundle
+rails s
+
+# gemfile
+gem 'faker'
+
+# terminal
+bundle
+
+# db/seeds.rb file
+
+User.create!(email: "dean@example.com",
+password: 'password',
+password_confirmation: "password",
+admin: true)
+
+25.times do |i|
+    post = Post.new
+    post.title= Faker::Lorem.sentence(word_count: 3, random_words_to_add: 7)
+    post.body= Faker::Lorem.paragraph_by_chars(number:1500)
+    post.user =  User.first
+    post.thumbnail.attach(io: open("https://picsum.photos/1920/1080"), filename: "#{i}_thumbnail.jpg")
+    post.banner.attach(io: open("https://picsum.photos/1920/1080"), filename: "#{i}_banner.jpg")
+    post.views = Faker::Number.between(from: 1, to: 500)
+    post.save
+end
+
+# gemfile
+gem 'will_paginate'
+
+# terminal
+bundle
+rails db:drop && rails db:migrate && rails db:seed
+
+# post.rb
+self.per_page = 10
+
+# post controller
+  def index
+    @posts = Post.all.order("created_at DESC").paginate(page: params[:page])
+  end
+
+# in app/assets/stylesheets make pagination.css
+.digg_pagination {
+  background: white;
+  cursor: default;
+  /* self-clearing method: */
+}
+.digg_pagination a,
+.digg_pagination span,
+.digg_pagination em {
+  padding: 0.2em 0.5em;
+  display: block;
+  float: left;
+  margin-right: 1px;
+}
+.digg_pagination .disabled {
+  color: #999999;
+  border: 1px solid #dddddd;
+}
+.digg_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background: #2e6ab1;
+  color: white;
+  border: 1px solid #2e6ab1;
+}
+.digg_pagination a {
+  text-decoration: none;
+  color: #105cb6;
+  border: 1px solid #9aafe5;
+}
+.digg_pagination a:hover,
+.digg_pagination a:focus {
+  color: #000033;
+  border-color: #000033;
+}
+.digg_pagination .page_info {
+  background: #2e6ab1;
+  color: white;
+  padding: 0.4em 0.6em;
+  width: 22em;
+  margin-bottom: 0.3em;
+  text-align: center;
+}
+.digg_pagination .page_info b {
+  color: #000033;
+  background: #6aa6ed;
+  padding: 0.1em 0.25em;
+}
+.digg_pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+* html .digg_pagination {
+  height: 1%;
+}
+*:first-child + html .digg_pagination {
+  overflow: hidden;
+}
+
+.apple_pagination {
+  background: #f1f1f1;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 1em;
+  cursor: default;
+}
+.apple_pagination a,
+.apple_pagination span {
+  padding: 0.2em 0.3em;
+}
+.apple_pagination .disabled {
+  color: #aaaaaa;
+}
+.apple_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background-color: #bebebe;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  line-height: 1.5;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;
+}
+.apple_pagination a {
+  text-decoration: none;
+  color: black;
+}
+.apple_pagination a:hover,
+.apple_pagination a:focus {
+  text-decoration: underline;
+}
+
+.flickr_pagination {
+  text-align: center;
+  padding: 0.3em;
+  cursor: default;
+}
+.flickr_pagination a,
+.flickr_pagination span,
+.flickr_pagination em {
+  padding: 0.2em 0.5em;
+}
+.flickr_pagination .disabled {
+  color: #aaaaaa;
+}
+.flickr_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  color: #ff0084;
+}
+.flickr_pagination a {
+  border: 1px solid #dddddd;
+  color: #0063dc;
+  text-decoration: none;
+}
+.flickr_pagination a:hover,
+.flickr_pagination a:focus {
+  border-color: #003366;
+  background: #0063dc;
+  color: white;
+}
+.flickr_pagination .page_info {
+  color: #aaaaaa;
+  padding-top: 0.8em;
+}
+.flickr_pagination .previous_page,
+.flickr_pagination .next_page {
+  border-width: 2px;
+}
+.flickr_pagination .previous_page {
+  margin-right: 1em;
+}
+.flickr_pagination .next_page {
+  margin-left: 1em;
+}
+
+# Posts index.html.erb
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+    <div class="digg_pagination">
+      <%= will_paginate @posts, :container => false %>
+    </div>
+  </div>
+  <% @posts.each do |post| %>
+  <div class="row">
+    <div class="card mb-3">
+      <img
+        class="card-img-top"
+        src="<%= url_for post.optimized_image(post.thumbnail, 586, 180) %>"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to post.title, post %></h5>
+        <p class="card-text"><%= post.body.truncate_words(25) %></p>
+        <p class="card-text">
+          <small class="text-muted"
+            ><%= post.updated_at.strftime("%A, %B %e, %Y") %> by <%=
+            post.user.username %> | <%= pluralize(post.views, "View") %></small
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<br />
+
+# posts show.html.erb
+<p id="notice"><%= notice %></p>
+<div style="width:100%;height: 300px; overflow-y:hidden">
+  <%= image_tag(@post.banner, style:'width:100%;') %>
+</div>
+<div class="container" style="margin-top:2em">
+  <div class="row">
+    <div class="jumbotron">
+      <h1 class="display-4">
+        <%= link_to @post.title, root_path %>
+      </h1>
+      <p class="lead">
+        <%= @post.updated_at.strftime("%A, %B %e, %Y") %> by <%=
+        @post.user.username %> | <%= pluralize(@post.views, "View") %>
+      </p>
+      <hr class="my-4" />
+      <div class="post_body">
+        <%= raw @post.body %>
+      </div>
+    </div>
+  </div>
+</div>
+
+# terminal
+rails active_text:install
+
+#form.html
+<%= form_with model: post do |f| %>
+
+<div class="form-inputs">
+  <%= f.text_field :title, class:'form-control string optional' %>
+  <%= f.label :thumbnail, class:'form-control' %> 
+  <%= f.file_field :thumbnail, class:'form-control' %> 
+  <%= f.label :banner, class:'form-control' %>
+  <%= f.file_field :banner, class:'form-control' %> 
+  
+</div>
+<div style="margin:1em">
+
+<%= f.rich_text_area :body %>
+</div>
+<div class="form-actions">
+  <%= f.button :submit %>
+</div>
+<% end %>
+
+
+
+
+

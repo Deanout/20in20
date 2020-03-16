@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+    <div class="digg_pagination">
+      <%= will_paginate @posts, :container => false %>
+    </div>
+  </div>
+  <% @posts.each do |post| %>
+  <div class="row">
+    <div class="card mb-3">
+      <img
+        class="card-img-top"
+        src="<%= url_for post.optimized_image(post.thumbnail, 586, 180) %>"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to post.title, post %></h5>
+        <p class="card-text"><%= post.body.to_plain_text.truncate_words(50) %></p>
+        <p class="card-text">
+          <small class="text-muted"
+            ><%= post.updated_at.strftime("%A, %B %e, %Y") %> by <%=
+            post.user.username %> | <%= pluralize(post.views, "View") %></small
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<br />

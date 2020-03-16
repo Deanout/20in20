@@ -1,0 +1,18 @@
+<%= form_with model: post do |f| %>
+
+<div class="form-inputs">
+  <%= f.text_field :title, class:'form-control string optional' %>
+  <%= f.label :thumbnail, class:'form-control' %> 
+  <%= f.file_field :thumbnail, class:'form-control' %> 
+  <%= f.label :banner, class:'form-control' %>
+  <%= f.file_field :banner, class:'form-control' %> 
+  
+</div>
+<div style="margin:1em">
+
+<%= f.rich_text_area :body %>
+</div>
+<div class="form-actions">
+  <%= f.button :submit %>
+</div>
+<% end %>
