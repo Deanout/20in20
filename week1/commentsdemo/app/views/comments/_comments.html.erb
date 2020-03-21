@@ -1,7 +1,11 @@
 <div class="row">
     <div class="col-3">
         <div class="row">
-            <%= image_tag(Post.first.thumbnail, class:'comment-avatar')%>
+            <% if comment.user.avatar.attached? %>
+            <%= image_tag(comment.user.avatar, class:'comment-avatar')%>
+            <% else %>
+            <%= image_tag("/default_profile.png", class:'comment-avatar') %>
+            <% end %>
         </div>
         <div class="row">
             <div class="comment-timestamp">
