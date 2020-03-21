@@ -2,7 +2,7 @@
 
 class Comment < ApplicationRecord
   before_create :set_comment_number
-  has_rich_text :content
+  has_rich_text :body
   belongs_to :user
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable, dependent: :destroy

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :comments do
     resources :comments
   end
+
+  get 'history', to: 'comments#history'
+
   devise_for :users
   root 'posts#index'
   get 'about', to: 'pages#about'

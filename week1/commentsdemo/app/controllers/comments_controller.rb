@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
+
     @comment.reply = true if params[:comment_id]
     @comment.save
   end
@@ -17,6 +18,11 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
+    if @comment.edit_history == ''
+      @comment.edit_history = 'Original: ' + @comment.body.body.to_plain_text + "\n"
+    else
+      @comment.edit_history = @comment.edit_history + 'Edit: ' + params[:comment][:body] + "\n"
+    end
     @comment.update(comment_params)
   end
 
@@ -25,10 +31,14 @@ class CommentsController < ApplicationController
     @comment.destroy
   end
 
+  def history
+    @history = Comment.find(params[:id])
+  end
+
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:body)
   end
 
   def find_commentable

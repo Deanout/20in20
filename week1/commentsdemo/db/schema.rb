@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_065714) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "body"
+    t.text "edit_history", default: ""
     t.integer "commentable_id"
     t.string "commentable_type"
     t.integer "user_id", null: false

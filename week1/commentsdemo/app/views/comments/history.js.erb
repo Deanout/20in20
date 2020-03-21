@@ -1,0 +1,5 @@
+var iframe = $("#iframe"); 
+var newWindow = window.open('Dynamic Popup', 'height=' + iframe.height() + ', width=' + iframe.width() + 'scrollbars=auto, resizable=no, location=no, status=no');
+newWindow.document.write(iframe[0].outerHTML);
+newWindow.document.close();
+//iframe[0].outerHTML = ''; // to remove iframe in page.

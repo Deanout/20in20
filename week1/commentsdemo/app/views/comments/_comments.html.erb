@@ -8,16 +8,14 @@
             <% end %>
         </div>
         <div class="row">
-            <div class="comment-timestamp">
-                <%= time_ago_in_words(comment.created_at) %> ago
-                <br />
-                <%= comment.created_at != comment.updated_at ? "Last edited " + time_ago_in_words(comment.updated_at) + " ago" : "" %>
+            <div class="comment-timestamp" id="edit-history-text-<%= comment.id %>">
+                <%= render 'comments/edit_history_text', comment: comment %>
             </div>
         </div>
     </div>
     <div class="col-9">
         <div class="row">
-            <div class="col-10">
+            <div class="col-8">
                 <div class="comment-username">
                     <%= comment.user.username %>
                 </div>
@@ -27,16 +25,17 @@
             </div>
 
             <% if current_user && (current_user == comment.user || current_user.admin) %>
-            <div class="col-2" style="padding-right: 0">
-                <%= link_to "Edit", edit_comment_path(comment), class:'btn btn-warning float-right', remote: true  %>
-                <%= link_to "Delete", comment, class:'btn btn-danger float-right', method: :delete, remote: true %>
-
+            <div class="col-4 text-right" style="padding-right: 0;">
+                <div class="btn-group" role="group" aria-label="Edit And Delete Buttons">
+                    <%= link_to "Edit", edit_comment_path(comment), class:'btn btn-warning float-right', remote: true  %>
+                    <%= link_to "Delete", comment, class:'btn btn-danger float-right', method: :delete, remote: true %>
+                </div>
             </div>
             <% end %>
         </div>
         <hr class="md-4">
         <div class="comment-body" id="comment-body-<%= comment.id %>">
-            <%= comment.content %>
+            <%= comment.body %>
         </div>
     </div>
 </div>
@@ -49,6 +48,26 @@
             <% comment.comments.each do |comment| %>
             <%= render comment %>
             <% end %>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="edit_history" tabindex="-1" role="dialog" aria-labelledby="Comment Edit History" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="edit_history_title">Edit History</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="edit-history-body">
+                <%= render 'comments/edit_history', comment: comment %>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>

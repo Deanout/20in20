@@ -11,3 +11,4 @@ if ("<%= @comment.reply %>" === 'true') {
     $("#comment-pane").prepend("<%= j render @comment %>");
     $(".reply-form-<%= @commentable.id %>").val('');
 }
+$(".trix-button-group--file-tools").remove();
