@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="comment-form">
+        <%= form_with model: [commentable, local] do |f| %>
+        <div class="form-group">
+            <%= f.rich_text_area :content, placeholder: "Say something...", class:"form-control reply-form-#{commentable.id}", id: f.object.object_id, method: :patch %><br />
+            <%= f.submit "Reply", class:'btn btn-dark float-right'  %>
+        </div>
+        <% end %>
+    </div>
+</div>
+
+<script>
+    $(".trix-button-group--file-tools").remove();
+    document.addEventListener("trix-file-accept", function(event) {
+        event.preventDefault();
+    });
+</script>

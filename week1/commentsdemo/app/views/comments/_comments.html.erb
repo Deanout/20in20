@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-3">
+        <div class="row">
+            <%= image_tag(Post.first.thumbnail, class:'comment-avatar')%>
+        </div>
+        <div class="row">
+            <div class="comment-timestamp">
+                <%= time_ago_in_words(comment.created_at) %> ago
+                <br />
+                <%= comment.created_at != comment.updated_at ? "Last edited " + time_ago_in_words(comment.updated_at) + " ago" : "" %>
+            </div>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="row">
+            <div class="col-10">
+                <div class="comment-username">
+                    <%= comment.user.username %>
+                </div>
+                <div class="comment-number">
+                    #<%= comment.comment_number %>
+                </div>
+            </div>
+
+            <% if current_user && (current_user == comment.user || current_user.admin) %>
+            <div class="col-2" style="padding-right: 0">
+                <%= link_to "Edit", edit_comment_path(comment), class:'btn btn-warning float-right', remote: true  %>
+                <%= link_to "Delete", comment, class:'btn btn-danger float-right', method: :delete, remote: true %>
+
+            </div>
+            <% end %>
+        </div>
+        <hr class="md-4">
+        <div class="comment-body" id="comment-body-<%= comment.id %>">
+            <%= comment.content %>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-9">
+        <div class="inner-comment-container" id="reply-<%= comment.id %>">
+            <% comment.comments.each do |comment| %>
+            <%= render comment %>
+            <% end %>
+        </div>
+    </div>
+</div>
