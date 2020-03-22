@@ -1,0 +1,33 @@
+<div style="width:100%; height: 300px; overflow-y:hidden">
+    <%= image_tag(@post.banner, style:'width:100%') %>
+</div>
+<div class="container" style="margin-top: 2em">
+    <div class="row">
+        <div class="jumbotron" style="width:100%">
+            <h1 class="display-4">
+                <%= link_to @post.title, root_path %>
+            </h1>
+            <p class="lead">
+                <%= @post.updated_at.strftime("%A, %B %e, %Y") %> by <%= @post.user.username %> | <%= pluralize(@post.views, "View") %> |
+                <%= pluralize(@num_comments, "Comment") %> |
+                <% if current_user && (current_user.admin || current.user == @post.user)%>
+                <%= link_to "Delete", @post, method: :delete %>
+                <% end %>
+            </p>
+            <hr class="my-4" />
+            <div class="post_body">
+                <%= @post.body %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <%= render 'comments/form', commentable: @post, local: Comment.new %>
+
+    <div id="comment-pane">
+        <% @comments.each do |comment| %>
+        <%= render comment %>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+<%= comment.edit_history.gsub(/\n/, '<br/><hr/>').html_safe %>

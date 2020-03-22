@@ -1,0 +1,5 @@
+$("#comment-body-<%= @comment.id %>").html("<%= raw @comment.body.body.to_html() %>");
+
+$("#edit-history-body").html("<%= j render 'comments/edit_history', comment: @comment %>");
+
+$("#edit-history-text-<%= @comment.id %>").html("<%= j render 'comments/edit_history_text', comment: @comment %>");

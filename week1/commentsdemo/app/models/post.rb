@@ -18,7 +18,6 @@ class Post < ApplicationRecord
   friendly_id :title, use: :slugged
 
   def optimized_image(image, x, y)
-
     image.variant(resize_to_fill: [x, y]).processed
   end
 end

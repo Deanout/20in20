@@ -1,0 +1,2 @@
+$("#comment-body-<%= @comment.id %>").html("<%= j render 'comments/form', commentable: @comment.commentable, local: @comment %>");
+$(".trix-button-group--file-tools").remove();

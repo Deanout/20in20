@@ -11,7 +11,7 @@ password: 'password',
 password_confirmation: "password",
 admin: true)
 
-25.times do |i|
+11.times do |i|
     post = Post.new
     post.title= Faker::Lorem.sentence(word_count: 3, random_words_to_add: 7)
     post.body= Faker::Lorem.paragraph_by_chars(number:5000)
