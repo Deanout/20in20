@@ -1,3 +1,4 @@
+<% if current_user %>
 <div class="row">
     <div class="comment-form">
         <%= form_with model: [commentable, local] do |f| %>
@@ -17,3 +18,14 @@
         });
     });
 </script>
+
+<% else %>
+<div class="row">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+        <h2 class="comment-login-prompt"><%= link_to "Login", new_user_session_path %> to comment</h2>
+    </div>
+    <div class="col-2"></div>
+</div>
+<% end %>

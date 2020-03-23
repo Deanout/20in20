@@ -40,8 +40,8 @@ class CommentsController < ApplicationController
     # Comment
     if params[:comment_id]
       @commentable = Comment.find_by_id(params[:comment_id])
-    elsif
-        @commentable = Post.friendly.find(params[:post_id])
+    elsif params[:post_id]
+      @commentable = Post.friendly.find(params[:post_id])
     end
   end
 
