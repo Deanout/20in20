@@ -1,0 +1,17 @@
+<div class="col-2">
+    <h5 class="link-container">
+        <%= link_to "Home", root_path, class:"link #{@page == 'home' ? 'active' : ''}" %>
+    </h5>
+    <h5 class="link-container">
+        <%= link_to "Menu", menu_path, class:"link #{@page == 'menu' ? 'active' : ''}" %>
+    </h5>
+    <h5 class="link-container">
+        <%= link_to "Catering", catering_path, class:"link #{@page == 'catering' ? 'active' : ''}" %>
+    </h5>
+    <h5 class="link-container">
+        <%= link_to "More Information", info_path, class:"link #{@page == 'info' ? 'active' : ''}" %>
+    </h5>
+    <h5 class="link-container">
+        <%= link_to "Customer Reviews", reviews_path, class:"link #{@page == 'reviews' ? 'active' : ''}" %>
+    </h5>
+</div>

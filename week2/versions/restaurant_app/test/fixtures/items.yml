@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  price: 9.99
+  catering_item: false
+
+two:
+  name: MyString
+  description: MyText
+  price: 9.99
+  catering_item: false
