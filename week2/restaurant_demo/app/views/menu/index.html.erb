@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="text-align:center">Menu</h1>
+<div id="cart">
+    <%= render 'cart/cart'%>
+</div>
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Gluten free</th>
+            <th scope="col">Vegan</th>
+            <th scope="col">Vegetarian</th>
+            <th scope="col">Kosher</th>
+            <th scope="col">Available</th>
+            <th scope="col">Catering</th>
+            <th scope="col">Featured</th>
+            <th colspan="10"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @products.each do |product| %>
+        <tr>
+            <th scope="row"><%= product.id %></th>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td><%= product.gluten_free %></td>
+            <td><%= product.vegan %></td>
+            <td><%= product.vegetarian %></td>
+            <td><%= product.kosher %></td>
+            <td><%= product.available %></td>
+            <td><%= product.catering %></td>
+            <td><%= product.featured %></td>
+        </tr>
+        <th scope="row">
+            <%= form_with model: @order_item do |f| %>
+            <%= f.hidden_field :product_id, value: product.id%>
+            <%= f.number_field :quantity, value: 1, min: 1%>
+            <%= f.submit "Add to cart" %>
+            <% end %>
+        </th>
+        <% end %>
+    </tbody>
+</table>

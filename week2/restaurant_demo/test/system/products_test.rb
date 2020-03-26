@@ -14,8 +14,17 @@ class ProductsTest < ApplicationSystemTestCase
     visit products_url
     click_on "New Product"
 
-    fill_in "Price", with: @product.price
-    fill_in "Title", with: @product.title
+    check "Available" if @product.available
+    check "Catering" if @product.catering
+    fill_in "Description", with: @product.description
+    check "Featured" if @product.featured
+    check "Gluten free" if @product.gluten_free
+    check "Kosher" if @product.kosher
+    fill_in "Name", with: @product.name
+    fill_in "Size", with: @product.size_id
+    fill_in "Toppings", with: @product.toppings_id
+    check "Vegan" if @product.vegan
+    check "Vegetarian" if @product.vegetarian
     click_on "Create Product"
 
     assert_text "Product was successfully created"
@@ -26,8 +35,17 @@ class ProductsTest < ApplicationSystemTestCase
     visit products_url
     click_on "Edit", match: :first
 
-    fill_in "Price", with: @product.price
-    fill_in "Title", with: @product.title
+    check "Available" if @product.available
+    check "Catering" if @product.catering
+    fill_in "Description", with: @product.description
+    check "Featured" if @product.featured
+    check "Gluten free" if @product.gluten_free
+    check "Kosher" if @product.kosher
+    fill_in "Name", with: @product.name
+    fill_in "Size", with: @product.size_id
+    fill_in "Toppings", with: @product.toppings_id
+    check "Vegan" if @product.vegan
+    check "Vegetarian" if @product.vegetarian
     click_on "Update Product"
 
     assert_text "Product was successfully updated"

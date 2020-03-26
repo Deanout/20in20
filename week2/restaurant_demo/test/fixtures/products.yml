@@ -1,9 +1,27 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  price: 9.99
+  size: one
+  toppings: one
+  name: MyString
+  description: MyText
+  gluten_free: false
+  vegan: false
+  vegetarian: false
+  kosher: false
+  available: false
+  catering: false
+  featured: false
 
 two:
-  title: MyString
-  price: 9.99
+  size: two
+  toppings: two
+  name: MyString
+  description: MyText
+  gluten_free: false
+  vegan: false
+  vegetarian: false
+  kosher: false
+  available: false
+  catering: false
+  featured: false

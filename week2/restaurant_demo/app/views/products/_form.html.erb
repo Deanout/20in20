@@ -1,27 +1,24 @@
-<%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<%= simple_form_for @product do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
 
-      <ul>
-        <% product.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+<div class="container">
+    <div class="row">
+        <div class="form-group">
+            <%= f.input :name, class:'form-control string required' %>
+            <%= f.input :description, class:'form-control' %>
+            <div class="form-check form-check-inline">
+                <%= f.input :gluten_free, class:'form-control' %>
+                <%= f.input :kosher, class:'form-control' %>
+                <%= f.input :lactose_free, class:'form-control' %>
+                <%= f.input :peanut_free, class:'form-control' %>
+                <%= f.input :vegan, class:'form-control' %>
+                <%= f.input :vegetarian, class:'form-control' %>
+                <%= f.input :available, class:'form-control' %>
+                <%= f.input :catering, class:'form-control' %>
+                <%= f.input :featured, class:'form-control' %>
+            </div>
+            <%= f.button :submit, class:'btn btn-secondary' %>
+        </div>
         <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
