@@ -9,7 +9,9 @@
             <p>
                 <%= item.description %>
             </p>
-            <span><%= item.price%> | <%= item.catering_item ? "Available for catering" : ""%> </span>
+            <span><%= item.price%> |
+                <%= item.catering_item ? "Available for catering" : ""%>
+            </span>
         </div>
         <% end %>
         <% end%>

@@ -1,0 +1,77 @@
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dairy_free %>
+    <%= form.check_box :dairy_free %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gluten_free %>
+    <%= form.check_box :gluten_free %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kosher %>
+    <%= form.check_box :kosher %>
+  </div>
+
+  <div class="field">
+    <%= form.label :peanut_free %>
+    <%= form.check_box :peanut_free %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vegan %>
+    <%= form.check_box :vegan %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vegetarian %>
+    <%= form.check_box :vegetarian %>
+  </div>
+
+  <div class="field">
+    <%= form.label :available %>
+    <%= form.check_box :available %>
+  </div>
+
+  <div class="field">
+    <%= form.label :catering %>
+    <%= form.check_box :catering %>
+  </div>
+
+  <div class="field">
+    <%= form.label :featured %>
+    <%= form.check_box :featured %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

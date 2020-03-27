@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RestaurantEpisode1</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+    <div class="<%= @page %>-page">
+        <div class="row page-container">
+            <%= render 'layouts/links'%>
+            <div class="col-8">
+                <% unless @page == "home"%>
+                <%= render 'layouts/title'%>
+                <% end %>
+                <%= yield %>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</body>
+
+</html>

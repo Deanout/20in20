@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Dairy free:</strong>
+  <%= @product.dairy_free %>
+</p>
+
+<p>
+  <strong>Gluten free:</strong>
+  <%= @product.gluten_free %>
+</p>
+
+<p>
+  <strong>Kosher:</strong>
+  <%= @product.kosher %>
+</p>
+
+<p>
+  <strong>Peanut free:</strong>
+  <%= @product.peanut_free %>
+</p>
+
+<p>
+  <strong>Vegan:</strong>
+  <%= @product.vegan %>
+</p>
+
+<p>
+  <strong>Vegetarian:</strong>
+  <%= @product.vegetarian %>
+</p>
+
+<p>
+  <strong>Available:</strong>
+  <%= @product.available %>
+</p>
+
+<p>
+  <strong>Catering:</strong>
+  <%= @product.catering %>
+</p>
+
+<p>
+  <strong>Featured:</strong>
+  <%= @product.featured %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
