@@ -1,0 +1,79 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+.page-container {
+    margin: 0px;
+    padding: 0px;
+    max-width: 100%
+}
+.title-card {
+    background-color: #111;
+    -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+}
+.title-text {
+    color: #FFF;
+    text-align: center;
+    font-size: 10em;
+    margin: 0;
+}
+
+.home-page {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/exterior.png");
+    background-size: 100% 100%;
+}
+
+.menu-page {
+    width: 100%;
+    height: 100%;
+    background-image: url("/menu.png");
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.menu-container {
+    -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+    background-color: #FFF;
+    width: 100%;
+    padding: 2em;
+}
+.catering-page {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/catering.png");
+    background-size: 100% 100%;
+}
+.info-page {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/info.png");
+    background-size: 100% 100%;
+}
+.reviews-page {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/reviews.png");
+    background-size: 100% 100%;
+}
+
+.link-container {
+    padding-left: 1em;
+    padding-top: 0.25em;
+    .link {
+        color: #FFF;
+    }
+    .active {
+        color: rgba(255,255,255,0.75);
+    }
+    .link:active {
+        color: rgba(255,255,255,0.75)
+    }
+}
