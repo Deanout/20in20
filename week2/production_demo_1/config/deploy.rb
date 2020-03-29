@@ -4,7 +4,7 @@
 lock '~> 3.12.1'
 
 set :application, 'production_demo_1'
-set :repo_url, 'git@github.com:deanout/20in20/week2/production_demo_1.git'
+set :repo_url, 'git@github.com:Deanout/production_demo_1.git'
 
 # Deploy to the user's home directory
 set :deploy_to, "/home/deploy/#{fetch :application}"

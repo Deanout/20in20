@@ -15,7 +15,6 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.boolean :available,   default: true
       t.boolean :catering,    default: false
       t.boolean :featured,    default: false
-      t.references :category, null: false, foreign_key: true
 
       t.timestamps
     end
