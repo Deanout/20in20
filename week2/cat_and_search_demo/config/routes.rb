@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'filter', to: 'menu#filter'
+  get 'search', to: 'menu#search'
 
   resources :categories
   get 'menu', to: 'menu#index'

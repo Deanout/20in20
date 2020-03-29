@@ -1,21 +1,33 @@
 <div class="menu-container">
     <div class="row">
-        <div class="col-6">
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-            <%= render 'layouts/filter', local: %>
+        <div class="col-12">
+            <%= form_tag(search_path, method: "get", remote: true) do %>
+
+            <div class="input-group mb-5">
+                <div class="col-8" style="padding:0">
+                    <%= text_field_tag :search,'', class: 'form-control', placeholder: "Search...", onkeydown:"clickSubmit();" %>
+                </div>
+                <div class="col-3" style="padding:0">
+                    <%= select_tag "filter", options_for_select(['Select Filter', 'Dairy Free', 'Gluten Free', 'Kosher', 'Peanut Free', 'Vegan', 'Vegetarian']),onchange:"clickSubmit();", class: 'custom-select' %>
+                </div>
+                <div class="col-1" style="padding:0">
+                    <%= submit_tag "Search", class:'btn btn-dark', id:"search_submit", style:'display:none'%>
+                </div>
+            </div>
+
+            <% end %>
+
 
 
         </div>
     </div>
-    <div class="row">
-        <% 3.times do %>
-        <% @products.each do |product| %>
-        <div class="col-4">
-            <h5><%=product.name %></h5>
-            <p><%= product.description %></p>
-            <span><%= product.price %> | <%= product.catering ? "Available for catering" : "" %>
-        </div>
-        <% end %>
-        <% end %>
+    <div id="menu-products-container">
+        <%= render 'menu/products' %>
     </div>
 </div>
+
+<script>
+    function clickSubmit() {
+        $('#search_submit').trigger('click');
+    }
+</script>
