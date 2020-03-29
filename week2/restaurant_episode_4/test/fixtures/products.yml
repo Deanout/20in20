@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  price: 9.99
+  dairy_free: false
+  gluten_free: false
+  kosher: false
+  peanut_free: false
+  vegan: false
+  vegetarian: false
+  available: false
+  catering: false
+  featured: false
+
+two:
+  name: MyString
+  description: MyText
+  price: 9.99
+  dairy_free: false
+  gluten_free: false
+  kosher: false
+  peanut_free: false
+  vegan: false
+  vegetarian: false
+  available: false
+  catering: false
+  featured: false

@@ -1,0 +1,24 @@
+<div class="row">
+    <% @cats.each do |cat| %>
+    <% if cat.products.where(featured: true).first.image.attached? %>
+    <%= image_tag(cat.products.where(featured: true).first.image, class:'img-fluid') %>
+    <% end %>
+    <div class="col-12">
+        <h1 style="text-align:center;"><%= cat.heading%></h1>
+        <hr />
+    </div>
+    <% @products.each do |product| %>
+    <% if product.category == cat %>
+    <div class="col-4">
+        <h5>
+            <%=product.name%>
+        </h5>
+        <p>
+            <%= product.description %>
+        </p>
+        <span><%= product.price %> <%= "| Available for catering" if product.catering %>
+    </div>
+    <% end %>
+    <% end %>
+    <% end %>
+</div>
