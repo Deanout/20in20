@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :categories
   get 'menu', to: 'menu#index'
   devise_for :users
   resources :products
