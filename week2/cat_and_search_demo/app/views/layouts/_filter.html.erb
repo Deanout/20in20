@@ -1,0 +1,5 @@
+<% if local %>
+<%= link_to "Filter", filter_path, class:'btn btn-success', remote: true %>
+<% else %>
+<%= link_to "Filter", filter_path, class:'btn btn-dark', remote: true %>
+<% end %>
