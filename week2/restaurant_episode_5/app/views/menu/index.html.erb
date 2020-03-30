@@ -1,0 +1,33 @@
+<div class="menu-container">
+    <div class="row">
+        <div class="col-12">
+            <%= form_tag(search_path, method: "get", remote: true) do %>
+            <div class="input-group mb-5">
+                <div class="col-8" style="padding:0">
+                    <%= text_field_tag :search, '', class:'form-control', placeholder: 'Search...', onkeydown:'clickSubmit();'%>
+                </div>
+                <div class="col-4" style="padding:0">
+                    <%= select_tag "filter", options_for_select(['Select Filter', 
+                    'Dairy Free', 
+                    'Gluten Free', 
+                    'Kosher', 
+                    'Peanut Free', 
+                    'Vegan', 
+                    'Vegetarian']), class:'custom-select', onchange:'clickSubmit()'%>
+
+                    <%= submit_tag "Search", class:'btn btn-dark', id:'search_submit', style:'display:none'%>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    <div id="menu-products-container">
+        <%= render 'menu/products'%>
+    </div>
+</div>
+
+<script>
+    function clickSubmit() {
+        $("#search_submit").trigger("click");
+    }
+</script>
