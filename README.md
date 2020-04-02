@@ -11,3 +11,6 @@ Hello and welcome to the repository for my 20 in 20 challenge. This repo will co
 ...
 
 • Week 21 - The Review
+
+# Potential issues with cloning this repository
+You might run into an issue if you attempt to clone this entire repository in order to access a version of the project used after the project was deployed to production. The reason is we created a github repository in order to use capistrano for those files, so you might have to go visit those individual repositories in order to clone. Sorry for the inconvenience!
