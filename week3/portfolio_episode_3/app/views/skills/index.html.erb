@@ -1,0 +1,31 @@
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Icon</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @skills.each.with_index do |skill, index| %>
+        <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= skill.name %></td>
+            <td><%= skill.description %></td>
+            <td><i class="fas <%= skill.icon %>"></i></td>
+            <td><%= link_to "Edit", edit_skill_path(skill), class:'btn btn-warning' %> </td>
+            <td><%= link_to "Delete", skill, method: :delete, class:'btn btn-danger' %> </td>
+
+        </tr>
+        <% end %>
+
+    </tbody>
+</table>
+<div class="button-group" role="group">
+    <%= link_to "Home", root_path, class:'btn btn-success'%>
+    <%= link_to "New Skill", new_skill_path, class:'btn btn-primary'%>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, class:'btn btn-danger'%>
+</div>

@@ -1,5 +1,5 @@
 {
-  "name": "week3demo",
+  "name": "portfolio_episode_1",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
