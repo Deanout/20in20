@@ -3,11 +3,33 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>My Todo List</title>
+    <title>Todo Stream</title>
+    <link rel="stylesheet" type="text/css" href="application.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1 style="text-align: center;">Home Page</h1>
-    <div id="container" style="margin: 2em; border: 2px solid black;"></div>
+    <div class="wrapper">
+      <h1 class="title">Todo Stream</h1>
+      <form
+        accept-charset="UTF-8"
+        action="http://localhost:3001/todos"
+        method="POST"
+        id="todo_form"
+        autocomplete="off"
+      >
+        <input type="text" name="todo[task]" value="" id="task_input" />
+        <input
+          type="submit"
+          value="Submit"
+          onclick="window.sendForm(event)"
+          class="task_submit"
+        />
+      </form>
+      <div id="container"></div>
+    </div>
   </body>
   <footer>
     <script type="text/javascript" src="application.js"></script>
