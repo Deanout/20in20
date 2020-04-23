@@ -1,0 +1,8 @@
+<% @genres.each do |genre| %>
+<h1><%= genre.name %></h1>
+<% genre.games.each do |game| %>
+<p>
+    <%= link_to image_tag(game.thumbnail), game %>
+</p>
+<% end %>
+<% end %>

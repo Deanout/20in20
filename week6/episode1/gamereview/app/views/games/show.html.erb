@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>Title:</strong>
+    <%= @game.title %>
+</p>
+
+<p>
+    <strong>Review:</strong>
+    <%= @game.review %>
+</p>
+
+<p>
+    <strong>Rating:</strong>
+    <%= @game.rating %>
+</p>
+<h3>This Game Belongs To <%= pluralize(@game.genres.count, "Genre") %>:</h3>
+<% @game.genres.each do |genre| %>
+<p><%= link_to genre.name, genre %></p>
+<% end %>
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

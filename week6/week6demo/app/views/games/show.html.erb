@@ -1,0 +1,29 @@
+<%= image_tag(@game.thumbnail) %>
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>Title:</strong>
+    <%= @game.title %>
+</p>
+
+<p>
+    <strong>Review:</strong>
+    <%= @game.review %>
+</p>
+
+<p>
+    <strong>Rating:</strong>
+    <%= @game.rating %>
+</p>
+
+<p>
+    <strong><%= @game.genres.count %> Genres:</strong>
+    <% @game.genres.each do |genre|%>
+    <p>
+        <%= genre.name %>
+    </p>
+    <% end %>
+</p>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>
