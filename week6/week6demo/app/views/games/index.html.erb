@@ -1,6 +1,28 @@
-<% @genres.each do |genre|%>
-<h1><%= genre.name %></h1>
-<% genre.games.each do |game| %>
-<%= link_to image_tag(game.thumbnail), game %>
-<% end %>
-<% end %>
+<div class="search-container">
+    <%= form_tag( games_search_path , remote: true) do %>
+    <div class="field">
+        <%= label_tag :genre,
+         "Genre: " %>
+        <%= select_tag :genre, 
+        options_from_collection_for_select(
+            @genres.to_a.unshift(Genre.new(id: 0, name: "All")),
+            "name",
+            "name",
+            "0") %>
+        <%= label_tag :order, "Game Order" %>
+        <%= select_tag :order, 
+        options_for_select(
+            ["A-Z",
+             "Z-A",
+             "Highest Score First",
+             "Lowest Score First",
+             "Newest First",
+             "Oldest First"]),
+             {include_blank: "Order"}%>
+        <%= submit_tag "Search" %>
+    </div>
+    <% end %>
+</div>
+<div id="genres">
+    <%= render 'games/genres', genres: @genres, genre_name: "All", order: "DESC" %>
+</div>
