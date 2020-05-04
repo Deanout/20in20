@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 style="text-align:center">All Time High Scores</h1>
+
+        <% @users.each.with_index do |user, index| %>
+        <p>
+            Rank #<%= index + 1 %>: <%= user.username %> has won <%= pluralize(user.wins, "Game") %>
+            out of <%= pluralize(user.wins + user.losses + user.ties, "Game") %> played.
+        </p>
+        <% end %>
+    </div>
+</div>

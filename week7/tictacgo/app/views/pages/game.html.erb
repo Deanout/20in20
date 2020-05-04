@@ -1,0 +1,80 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+<div class="container" style="text-align: center">
+    <h1 id="scoreText" style="text-align: center">
+        <%= pluralize(@wins, "Win") %> / <%= pluralize(@losses, "Loss") %> / <%= pluralize(@ties, "Tie") %>
+    </h1>
+    <div style="font-size: 32px" id="result"></div>
+</div>
+
+<script>
+    var canvas;
+    var board;
+    var human = 'O';
+    var computer = 'X';
+    var currentPlayer;
+    var available = [];
+    var nodeWidth;
+    var nodeHeight;
+    var resultText = document.getElementById("result");
+    var scoreText = document.getElementById("scoreText");
+    var canvasOffset = resultText.getBoundingClientRect().bottom;
+    var winner;
+    var gameInProgress;
+    var score = [
+        parseInt("<%= @wins %>"),
+        parseInt("<%= @losses %>"),
+        parseInt("<%= @ties %>")
+    ];
+
+    function newGame() {
+        noLoop();
+        resultText.innerHTML = "";
+        board = [
+            ['', '', '', ],
+            ['', '', '', ],
+            ['', '', '', ]
+        ]
+        available = board;
+        currentPlayer = random([human, computer]);
+        gameInProgress = true;
+        loop();
+
+    }
+
+
+    function setup() {
+        canvas = createCanvas(windowWidth, windowHeight - canvasOffset * 2);
+        nodeWidth = width / 3;
+        nodeHeight = height / 3;
+        centerCanvas();
+        newGame();
+    }
+
+    function centerCanvas() {
+        var canvasX = (windowWidth - width) / 2;
+        var canvasY = (windowHeight - height) / 2 + canvasOffset;
+        canvas.position(canvasX, canvasY);
+    }
+
+    function windowResized() {
+        resizeCanvas(windowWidth, windowHeight - canvasOffset * 2);
+        nodeWidth = width / 3;
+        nodeHeight = height / 3;
+        centerCanvas();
+        drawGrid();
+    }
+
+    function drawGrid() {
+        line(nodeWidth, 0, nodeWidth, height);
+        line(nodeWidth * 2, 0, nodeWidth * 2, height);
+        line(0, nodeHeight, width, nodeHeight);
+        line(0, nodeHeight * 2, width, nodeHeight * 2);
+    }
+
+    function draw() {
+        background(220);
+        drawGrid();
+        strokeWeight(4);
+
+    }
+</script>

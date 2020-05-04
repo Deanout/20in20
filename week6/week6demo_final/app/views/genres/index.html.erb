@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="container">
+    <h1 style="text-align:center"><%= link_to "Genres", root_path %></h1>
+
+    <% @genres.each do |genre| %>
+    <div class="container">
+        <div class="row">
+            <%= form_with(model: genre, local: true) do |form| %>
+            <div class="col">
+                <div class="form-group row">
+                    <div class="col">
+                        <%= form.text_field :name, class:'form-control'%>
+                    </div>
+                    <div class="col-form-label">
+                        <%= form.label "Feature", class:'col-form-label' %>
+                    </div>
+                    <div class="col">
+                        <%= form.check_box :feature_in_navbar, class:'form-control' %>
+                    </div>
+                    <div class="col">
+                        <%= form.submit "Update" %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+            <div class="col">
+                <%= link_to 'Destroy', genre, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>
+            </div>
+        </div>
+
+    </div>
+    <% end %>
+</div>

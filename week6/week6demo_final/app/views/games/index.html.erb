@@ -1,0 +1,35 @@
+<div class="search-container">
+    <%= form_tag(games_search_path, remote: true) do %>
+    <div class="container form-group">
+
+        <div class="row">
+
+            <div class="col-5" style="padding:0px">
+                <%= select_tag :genre, options_from_collection_for_select(
+                @genres.to_a.unshift(Genre.new(id: 0, name: "All")),
+            "name",
+            "name",
+            "0"), class:'form-control' %>
+            </div>
+            <div class="col-5" style="padding:0px">
+                <%= select_tag :order, options_for_select([
+                "A-Z",
+                "Z-A",
+                "Highest Rating First",
+                "Lowest Rating First",
+                "Newest First",
+                "Oldest First"]),
+        {include_blank: "Order", class:'form-control'} %>
+            </div>
+            <div class="col-2" style="padding:0px">
+                <%= submit_tag "Search", class:'btn btn-secondary' %>
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>
+
+
+<div id="genres">
+    <%= render 'games/genres' %>
+</div>

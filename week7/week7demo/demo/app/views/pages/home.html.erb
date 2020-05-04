@@ -1,0 +1,14 @@
+<div class="container mt-5" style="text-align:center; background-color: #ccc; padding:3em">
+    <h1>Tic Tac Go</h1>
+    <p>Week 7's project for the 20in20 challenge!</p>
+
+    <% if current_user %>
+    <%= link_to "Play a game!", game_path %>
+    <br />
+    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+    <%= link_to "Create Account", new_user_registration_path %>
+    <br />
+    <%= link_to "Login", new_user_session_path %>
+    <% end %>
+</div>

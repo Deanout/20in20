@@ -1,0 +1,16 @@
+<div class="container mt-5">
+    <div class="jumbotron" style="text-align:center">
+        <h1>Tic Tac Go</h1>
+        <p>Week 7's Project For The 20in20 Challenge!</p>
+
+        <% if current_user %>
+        <%= link_to "Play A Game!", game_path %>
+        <br />
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <% else %>
+        <%= link_to "Create An Account", new_user_registration_path %>
+        <br />
+        <%= link_to "Login", new_user_session_path %>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<h1><%= link_to @genre_name, root_path %></h1>
+<div id="games">
+    <% @games.each do |game| %>
+    <% if game.thumbnail.attached? %>
+    <% if params[:genre] %>
+    <%= link_to image_tag(game.resized_thumbnail), game_path(game, genre: params[:genre]) %>
+    <% else %>
+    <%= link_to image_tag(game.resized_thumbnail), game %>
+    <% end %>
+    <% end %>
+    <% end %>
+</div>

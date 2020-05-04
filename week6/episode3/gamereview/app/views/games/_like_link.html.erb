@@ -1,0 +1,7 @@
+<% if current_user %>
+<% vote_text = current_user&.voted_for?(game) ? "Unlike" : "Like" %>
+
+<%= link_to vote_text, like_game_path(game), method: :put, remote: :true, class: 'like-post' %>
+<% else %>
+<%= link_to "Like", new_user_session_path, class: 'like-post' %>
+<% end %>

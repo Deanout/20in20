@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <%= image_tag(@game.thumbnail, class:'img-fluid') if @game.thumbnail.attached? %>
+            <div class="row">
+                <div class="col-12">
+                    <h4>
+                        [<%= @game.rating %>/10]
+                    </h4>
+                </div>
+                <div class="col-12">
+                    <h5>
+                        <div id="like-count">
+                            <%= render 'games/likes', game: @game %>
+                        </div>
+                        <div id="like-text">
+                            <%= render 'games/like_text', game: @game %>
+                        </div>
+                        <hr />
+                    </h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h6>This Game Belongs To <%= render 'games/likes', game: @game %>: </h6>
+                </div>
+                <% @game.genres.each do |genre| %>
+                <div class="col-6">
+                    <%= link_to genre.name, games_path(genre: genre.name) %>
+                </div>
+                <% end %>
+                <div class="col-12">
+                    <% if current_user&.admin%>
+                    <%= link_to 'Edit', edit_game_path(@game), class:'btn btn-warning' %>
+                    <%= link_to "Delete", @game, method: :delete, class:'btn btn-danger' %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <h1>
+                <% if params[:genre].nil? %>
+                <%= link_to @game.title, root_path %>
+                <% else %>
+                <%= link_to @game.title, root_path(genre: params[:genre]) %>
+                <% end %>
+            </h1>
+
+
+            <div class="container">
+                <%= @game.review %>
+            </div>
+
+        </div>
+
+    </div>
+</div>
