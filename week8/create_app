@@ -1,0 +1,1 @@
+rails new demo -m https://gist.githubusercontent.com/Deanout/944f13463a30971f391b3dd6f1363653/raw/6c12153eb3797dcc7525aae081719e2a0975716b/week8demo.rb --skip-spring
