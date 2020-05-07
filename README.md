@@ -18,7 +18,7 @@ Hello and welcome to the repository for my 20 in 20 challenge. This repo will co
 
 • Week 6 - The Game Review Application: https://www.youtube.com/watch?v=PrjNxhVTR5A&list=PL3mtAHT_eReypxPABSVZMVpoAfoSjtpXX
 
-• Week 7 - 
+• Week 7 - The Tic Tac Toe With Leaderboard Game: https://www.youtube.com/watch?v=Aye0E8uMDLo
 
 • Week 8 - 
 
