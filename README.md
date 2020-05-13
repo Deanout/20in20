@@ -20,8 +20,9 @@ Hello and welcome to the repository for my 20 in 20 challenge. This repo will co
 
 • Week 7 - The Tic Tac Toe With Leaderboard Game: https://www.youtube.com/watch?v=Aye0E8uMDLo
 
-• Week 8 - 
-
+• Week 8 - The Devise And Bootstrap Rails Template
+            - Video Tutorial https://youtu.be/JR8u5gfmDxU
+            - Blog Tutorial https://deandehart.com/blog/rails-template-for-devvise-and-bootstrap
 • Week 9 - 
 
 • Week 10 - 
