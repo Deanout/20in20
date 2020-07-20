@@ -23,9 +23,12 @@ Hello and welcome to the repository for my 20 in 20 challenge. This repo will co
 • Week 8 - The Devise And Bootstrap Rails Template
             - Video Tutorial https://youtu.be/JR8u5gfmDxU
             - Blog Tutorial https://deandehart.com/blog/rails-template-for-devvise-and-bootstrap
-• Week 9 - 
 
-• Week 10 - 
+• Week 9 - The notebook application using Active Admin: https://www.youtube.com/watch?v=DfaaTkzOoHo
+
+• Week 10 - Using Stimulus Reflex and Rails Bytes To Make A Fast application: https://www.youtube.com/watch?v=hxqkTy2SB78
+
+# Half Way Hiatus
 
 • Week 11 - 
 
