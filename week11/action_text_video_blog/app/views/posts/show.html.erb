@@ -1,0 +1,18 @@
+<link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Views:</strong>
+  <%= @post.views %>
+</p>
+
+<%= @post.body %>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+<script src="https://vjs.zencdn.net/7.8.3/video.js"></script>

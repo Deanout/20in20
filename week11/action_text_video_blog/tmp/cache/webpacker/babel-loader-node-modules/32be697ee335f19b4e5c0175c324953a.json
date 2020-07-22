@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { AttachmentUpload } from \"./attachment_upload\";\naddEventListener(\"trix-attachment-add\", function (event) {\n  var attachment = event.attachment,\n      target = event.target;\n\n  if (attachment.file) {\n    var upload = new AttachmentUpload(attachment, target);\n    upload.start();\n  }\n});","map":null,"metadata":{},"sourceType":"module"}

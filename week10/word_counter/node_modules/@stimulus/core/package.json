@@ -1,0 +1,36 @@
+{
+  "name": "@stimulus/core",
+  "version": "1.1.1",
+  "description": "Stimulus JavaScript framework: Core library",
+  "repository": "https://github.com/stimulusjs/stimulus",
+  "author": "Basecamp, LLC",
+  "contributors": [
+    "David Heinemeier Hansson <david@basecamp.com>",
+    "Javan Makhmali <javan@javan.us>",
+    "Sam Stephenson <sstephenson@gmail.com>"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "dependencies": {
+    "@stimulus/mutation-observers": "^1.1.1"
+  },
+  "files": [
+    "dist/index*",
+    "dist/src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@stimulus/polyfills": "^1.1.1",
+    "@stimulus/test": "^1.1.1"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "tslint -p . -c ../../../config/tslint.json",
+    "build": "{ [ ! -r dist ] || { find src -newer dist | grep .; }>/dev/null; } && { tsc && touch dist; } || true",
+    "watch": "tsc --watch"
+  },
+  "gitHead": "3b30d61b9c93bd29a6f4ce6ca97428bd01f339bc"
+}

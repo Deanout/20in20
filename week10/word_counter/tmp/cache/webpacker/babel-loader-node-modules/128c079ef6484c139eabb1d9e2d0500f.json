@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var defaultSchema = {\n  reflexAttribute: 'data-reflex',\n  reflexPermanentAttribute: 'data-reflex-permanent',\n  reflexRootAttribute: 'data-reflex-root'\n};","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1141 @@
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePosts (20200721034208)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "views" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200721034208"]]
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-21 03:43:23.073802"], ["updated_at", "2020-07-21 03:43:23.073802"]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-07-20 23:43:31 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:15
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1515)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /code/20in20/week11/action_text_video_blog/public/packs
+[Webpacker] Hash: 15d1bb7b54cf6326b9ba
+Version: webpack 4.43.0
+Time: 1207ms
+Built at: 07/20/2020 11:43:33 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-9afcbb5693aa87623e69.js    124 KiB  application  [emitted] [immutable]  application
+js/application-9afcbb5693aa87623e69.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-9afcbb5693aa87623e69.js js/application-9afcbb5693aa87623e69.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 2055ms (Views: 2045.2ms | ActiveRecord: 0.3ms | Allocations: 21105)
+
+
+Started GET "/posts/new" for ::1 at 2020-07-20 23:43:39 -0400
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 7.9ms | Allocations: 4327)
+  Rendered posts/new.html.erb within layouts/application (Duration: 8.5ms | Allocations: 4663)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 12.3ms | ActiveRecord: 0.3ms | Allocations: 10904)
+
+
+Started POST "/posts" for ::1 at 2020-07-20 23:43:42 -0400
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"06tq55Ds2+HSqO/UhATJiQTyrTfqqQg8s4Ct7qrIbE1nrsPqsM7tnV0WJoyDc5Fp3cnTADWg4DFAk7EFrQr5fw==", "post"=>{"title"=>"test", "views"=>"0"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:30:in `block in create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "test"], ["created_at", "2020-07-21 03:43:42.954757"], ["updated_at", "2020-07-21 03:43:42.954757"]]
+  ↳ app/controllers/posts_controller.rb:30:in `block in create'
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 12ms (ActiveRecord: 6.0ms | Allocations: 4010)
+
+
+Started GET "/posts/1" for ::1 at 2020-07-20 23:43:42 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 253)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.2ms | Allocations: 4734)
+
+
+Started GET "/posts" for ::1 at 2020-07-20 23:43:47 -0400
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:15
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 775)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.1ms | Allocations: 4178)
+
+
+Started GET "/posts/1" for ::1 at 2020-07-20 23:43:48 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 81)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.1ms | Allocations: 3990)
+
+
+Started GET "/posts/1" for ::1 at 2020-07-20 23:44:36 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 1], ["updated_at", "2020-07-21 03:44:36.792087"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 87)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 4.3ms | ActiveRecord: 6.2ms | Allocations: 10649)
+
+
+Started GET "/posts/1" for ::1 at 2020-07-20 23:44:37 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 2], ["updated_at", "2020-07-21 03:44:37.864985"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 77)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 3.3ms | ActiveRecord: 7.4ms | Allocations: 7139)
+
+
+Started GET "/posts/1" for ::1 at 2020-07-20 23:44:38 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 3], ["updated_at", "2020-07-21 03:44:38.382282"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 77)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 3.5ms | ActiveRecord: 6.3ms | Allocations: 7149)
+
+
+Started GET "/posts/1" for ::1 at 2020-07-20 23:44:38 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 4], ["updated_at", "2020-07-21 03:44:38.784885"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 77)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 10.1ms | ActiveRecord: 7.2ms | Allocations: 7129)
+
+
+Started GET "/posts/1" for ::1 at 2020-07-20 23:44:39 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 5], ["updated_at", "2020-07-21 03:44:39.176350"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 78)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 3.4ms | ActiveRecord: 7.4ms | Allocations: 7163)
+
+
+Started GET "/posts/1" for ::1 at 2020-07-20 23:44:40 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.3ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 6], ["updated_at", "2020-07-21 03:44:40.838382"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (13.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 77)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 4.2ms | ActiveRecord: 13.8ms | Allocations: 7139)
+
+
+Started GET "/posts/1" for ::1 at 2020-07-20 23:44:41 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 7], ["updated_at", "2020-07-21 03:44:41.065055"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 77)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 3.6ms | ActiveRecord: 7.8ms | Allocations: 7141)
+
+
+Started GET "/posts/1" for ::1 at 2020-07-20 23:44:41 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 8], ["updated_at", "2020-07-21 03:44:41.325462"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 77)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 3.5ms | ActiveRecord: 8.5ms | Allocations: 7135)
+
+
+Started GET "/posts/1" for ::1 at 2020-07-20 23:44:41 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 9], ["updated_at", "2020-07-21 03:44:41.525099"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 77)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 3.4ms | ActiveRecord: 6.6ms | Allocations: 7143)
+
+
+Started GET "/posts" for ::1 at 2020-07-20 23:44:42 -0400
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:15
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 829)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.2ms | Allocations: 4212)
+
+
+Started GET "/posts/1" for ::1 at 2020-07-20 23:44:43 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 10], ["updated_at", "2020-07-21 03:44:43.225426"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (7.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 77)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 3.5ms | ActiveRecord: 7.7ms | Allocations: 7133)
+
+
+Started GET "/posts" for ::1 at 2020-07-20 23:44:44 -0400
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:15
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 760)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.1ms | Allocations: 4139)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveStorageTables (20200721034517)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200721034517"]]
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActionTextTables (20200721034518)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "action_text_rich_texts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "body" text, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_action_text_rich_texts_uniqueness" ON "action_text_rich_texts" ("record_type", "record_id", "name")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200721034518"]]
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/posts/new" for ::1 at 2020-07-20 23:46:38 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 11.2ms | Allocations: 2662)
+  Rendered posts/new.html.erb within layouts/application (Duration: 13.4ms | Allocations: 3112)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /code/20in20/week11/action_text_video_blog/public/packs
+[Webpacker] Hash: e96018350314c2990929
+Version: webpack 4.43.0
+Time: 2252ms
+Built at: 07/20/2020 11:46:41 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-9301157b98f18a0963fa.js    463 KiB  application  [emitted] [immutable]  application
+js/application-9301157b98f18a0963fa.js.map    521 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-9301157b98f18a0963fa.js js/application-9301157b98f18a0963fa.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 799 bytes {application} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 9 hidden modules
+
+Completed 200 OK in 3105ms (Views: 3088.3ms | ActiveRecord: 0.4ms | Allocations: 33336)
+
+
+Started GET "/posts/new" for ::1 at 2020-07-20 23:47:03 -0400
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 16.9ms | Allocations: 12327)
+  Rendered posts/new.html.erb within layouts/application (Duration: 17.7ms | Allocations: 12657)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.4ms | Allocations: 17382)
+
+
+Started POST "/posts" for ::1 at 2020-07-20 23:47:41 -0400
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"sgCqxk+mSN/xahRP9c7z++vtIED5cuP8KzNDnIx9s2SpLEa6Db1z9/qbXq43InIHQKmjJHDaR4Nl1LcqdqjNhQ==", "post"=>{"title"=>"This is a test post!", "body"=>"<div>ksndmfsd<br><br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id semper risus in hendrerit gravida. Libero nunc consequat interdum varius sit. Eu volutpat odio facilisis mauris sit amet. Diam sit amet nisl suscipit. Lobortis mattis aliquam faucibus purus in massa tempor. Sed libero enim sed faucibus turpis in eu mi bibendum. Consequat mauris nunc congue nisi. Pretium vulputate sapien nec sagittis aliquam malesuada. Morbi tristique senectus et netus et malesuada fames ac turpis. At risus viverra adipiscing at in tellus. Tempus quam pellentesque nec nam aliquam sem et tortor. Sed vulputate mi sit amet mauris commodo quis imperdiet. Massa tempor nec feugiat nisl pretium fusce id. Nunc aliquet bibendum enim facilisis gravida. Mi bibendum neque egestas congue quisque egestas. Morbi non arcu risus quis.<br><br></div><div><br><em>Porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Varius morbi enim nunc faucibus. Enim ut sem viverra aliquet eget sit amet tellus cras. Ipsum dolor sit amet consectetur adipiscing elit. Eget est lorem ipsum dolor sit amet. Lectus arcu bibendum at varius. Cras semper auctor neque vitae. Cursus euismod quis viverra nibh cras pulvinar. Ut sem viverra aliquet eget sit amet tellus cras. Fames ac turpis egestas sed tempus urna et. Pellentesque diam volutpat commodo sed. Nisl rhoncus mattis rhoncus urna neque. In ornare quam viverra orci sagittis eu. Amet nulla facilisi morbi tempus iaculis. Tincidunt arcu non sodales neque sodales. Neque gravida in fermentum et sollicitudin ac orci phasellus. Tincidunt vitae semper quis lectus. Quis varius quam quisque id diam vel quam. Malesuada nunc vel risus commodo. Sociis natoque penatibus et magnis dis parturient montes nascetur.</em><br><br></div><div><br><strong>Faucibus pulvinar elementum integer enim neque volutpat ac. Nunc aliquet bibendum enim facilisis gravida neque convallis a. Sed pulvinar proin gravida hendrerit lectus. Quam elementum pulvinar etiam non. Lacus laoreet non curabitur gravida arcu ac. Enim ut tellus elementum sagittis. Sem viverra aliquet eget sit amet. Egestas maecenas pharetra convallis posuere morbi leo urna molestie at. Ornare suspendisse sed nisi lacus sed viverra. Morbi tincidunt ornare massa eget egestas.</strong><br><br></div><div><br>Purus non enim praesent elementum facilisis leo vel. Proin fermentum leo vel orci. Nibh venenatis cras sed felis eget velit aliquet. Orci eu lobortis elementum nibh tellus molestie nunc non. Sit amet porttitor eget dolor morbi non. Vel turpis nunc eget lorem dolor sed. Molestie at elementum eu facilisis sed odio morbi quis. Viverra nibh cras pulvinar mattis nunc. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum. A condimentum vitae sapien pellentesque habitant morbi tristique senectus.<br><br></div><div><br>Vestibulum morbi blandit cursus risus at ultrices. Consectetur lorem donec massa sapien faucibus. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus. Velit egestas dui id ornare arcu. Suspendisse in est ante in nibh mauris cursus. Interdum varius sit amet mattis vulputate enim nulla. Urna id volutpat lacus laoreet non curabitur. Arcu bibendum at varius vel. Ultrices sagittis orci a scelerisque purus semper. Ipsum faucibus vitae aliquet nec. Scelerisque viverra mauris in aliquam. Sed nisi lacus sed viverra tellus in hac habitasse platea. Ultrices dui sapien eget mi proin sed libero. Viverra nam libero justo laoreet sit. Ullamcorper velit sed ullamcorper morbi tincidunt. Nulla pharetra diam sit amet nisl suscipit.<br><br></div>"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:33:in `block in create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "This is a test post!"], ["created_at", "2020-07-21 03:47:41.242623"], ["updated_at", "2020-07-21 03:47:41.242623"]]
+  ↳ app/controllers/posts_controller.rb:33:in `block in create'
+  [1m[36mActionText::RichText Create (0.4ms)[0m  [1m[32mINSERT INTO "action_text_rich_texts" ("name", "body", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "body"], ["body", "<div>ksndmfsd<br><br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id semper risus in hendrerit gravida. Libero nunc consequat interdum varius sit. Eu volutpat odio facilisis mauris sit amet. Diam sit amet nisl suscipit. Lobortis mattis aliquam faucibus purus in massa tempor. Sed libero enim sed faucibus turpis in eu mi bibendum. Consequat mauris nunc congue nisi. Pretium vulputate sapien nec sagittis aliquam malesuada. Morbi tristique senectus et netus et malesuada fames ac turpis. At risus viverra adipiscing at in tellus. Tempus quam pellentesque nec nam aliquam sem et tortor. Sed vulputate mi sit amet mauris commodo quis imperdiet. Massa tempor nec feugiat nisl pretium fusce id. Nunc aliquet bibendum enim facilisis gravida. Mi bibendum neque egestas congue quisque egestas. Morbi non arcu risus quis.<br><br></div><div><br><em>Porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Varius morbi enim nunc faucibus. Enim ut sem viverra aliquet eget sit amet tellus cras. Ipsum dolor sit amet consectetur adipiscing elit. Eget est lorem ipsum dolor sit amet. Lectus arcu bibendum at varius. Cras semper auctor neque vitae. Cursus euismod quis viverra nibh cras pulvinar. Ut sem viverra aliquet eget sit amet tellus cras. Fames ac turpis egestas sed tempus urna et. Pellentesque diam volutpat commodo sed. Nisl rhoncus mattis rhoncus urna neque. In ornare quam viverra orci sagittis eu. Amet nulla facilisi morbi tempus iaculis. Tincidunt arcu non sodales neque sodales. Neque gravida in fermentum et sollicitudin ac orci phasellus. Tincidunt vitae semper quis lectus. Quis varius quam quisque id diam vel quam. Malesuada nunc vel risus commodo. Sociis natoque penatibus et magnis dis parturient montes nascetur.</em><br><br></div><div><br><strong>Faucibus pulvinar elementum integer enim neque volutpat ac. Nunc aliquet bibendum enim facilisis gravida neque convallis a. Sed pulvinar proin gravida hendrerit lectus. Quam elementum pulvinar etiam non. Lacus laoreet non curabitur gravida arcu ac. Enim ut tellus elementum sagittis. Sem viverra aliquet eget sit amet. Egestas maecenas pharetra convallis posuere morbi leo urna molestie at. Ornare suspendisse sed nisi lacus sed viverra. Morbi tincidunt ornare massa eget egestas.</strong><br><br></div><div><br>Purus non enim praesent elementum facilisis leo vel. Proin fermentum leo vel orci. Nibh venenatis cras sed felis eget velit aliquet. Orci eu lobortis elementum nibh tellus molestie nunc non. Sit amet porttitor eget dolor morbi non. Vel turpis nunc eget lorem dolor sed. Molestie at elementum eu facilisis sed odio morbi quis. Viverra nibh cras pulvinar mattis nunc. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum. A condimentum vitae sapien pellentesque habitant morbi tristique senectus.<br><br></div><div><br>Vestibulum morbi blandit cursus risus at ultrices. Consectetur lorem donec massa sapien faucibus. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus. Velit egestas dui id ornare arcu. Suspendisse in est ante in nibh mauris cursus. Interdum varius sit amet mattis vulputate enim nulla. Urna id volutpat lacus laoreet non curabitur. Arcu bibendum at varius vel. Ultrices sagittis orci a scelerisque purus semper. Ipsum faucibus vitae aliquet nec. Scelerisque viverra mauris in aliquam. Sed nisi lacus sed viverra tellus in hac habitasse platea. Ultrices dui sapien eget mi proin sed libero. Viverra nam libero justo laoreet sit. Ullamcorper velit sed ullamcorper morbi tincidunt. Nulla pharetra diam sit amet nisl suscipit.<br><br></div>"], ["record_type", "Post"], ["record_id", 2], ["created_at", "2020-07-21 03:47:41.259552"], ["updated_at", "2020-07-21 03:47:41.259552"]]
+  ↳ app/controllers/posts_controller.rb:33:in `block in create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 1], ["record_type", "ActionText::RichText"], ["name", "embeds"]]
+  ↳ app/controllers/posts_controller.rb:33:in `block in create'
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2020-07-21 03:47:41.262168"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:33:in `block in create'
+  [1m[35m (8.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:33:in `block in create'
+Redirected to http://localhost:3000/posts/2
+Completed 302 Found in 41ms (ActiveRecord: 9.7ms | Allocations: 22279)
+
+
+Started GET "/posts/2" for ::1 at 2020-07-20 23:47:41 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 1], ["updated_at", "2020-07-21 03:47:41.287541"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 250)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 4.0ms | ActiveRecord: 5.9ms | Allocations: 8170)
+
+
+Started GET "/posts/2" for ::1 at 2020-07-20 23:48:11 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 2], ["updated_at", "2020-07-21 03:48:11.005396"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (11.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActionText::RichText Load (0.1ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 1.0ms | Allocations: 915)
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.4ms | Allocations: 3047)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 8.6ms | ActiveRecord: 12.3ms | Allocations: 11545)
+
+
+Started GET "/posts/2/edit" for ::1 at 2020-07-20 23:48:20 -0400
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  Rendering posts/edit.html.erb within layouts/application
+  [1m[36mActionText::RichText Load (0.1ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
+  ↳ app/views/posts/_form.html.erb:21
+  Rendered posts/_form.html.erb (Duration: 4.4ms | Allocations: 2758)
+  Rendered posts/edit.html.erb within layouts/application (Duration: 5.0ms | Allocations: 3134)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.2ms | Allocations: 7667)
+
+
+Started POST "/rails/active_storage/direct_uploads" for ::1 at 2020-07-20 23:48:32 -0400
+Processing by ActiveStorage::DirectUploadsController#create as JSON
+  Parameters: {"blob"=>{"filename"=>"IMG_1242-2.jpg", "content_type"=>"image/jpeg", "byte_size"=>1804036, "checksum"=>"HdYxVgDCSuzn4gadxwTVuA=="}, "direct_upload"=>{"blob"=>{"filename"=>"IMG_1242-2.jpg", "content_type"=>"image/jpeg", "byte_size"=>1804036, "checksum"=>"HdYxVgDCSuzn4gadxwTVuA=="}}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["key", "vnr81rj73jigwfhz7t1qydu3b1ro"], ["filename", "IMG_1242-2.jpg"], ["content_type", "image/jpeg"], ["byte_size", 1804036], ["checksum", "HdYxVgDCSuzn4gadxwTVuA=="], ["created_at", "2020-07-21 03:48:32.076316"]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: vnr81rj73jigwfhz7t1qydu3b1ro (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlid1k2QmtWVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9UWTI5dWRHVnVkRjlzWlc1bmRHaHBBd1NIR3pvTlkyaGxZMnR6ZFcxSkloMUlaRmw0Vm1kRVExTjFlbTQwWjJGa2VIZFVWblZCUFQwR093WlUiLCJleHAiOiIyMDIwLTA3LTIxVDAzOjUzOjMyLjA4OFoiLCJwdXIiOiJibG9iX3Rva2VuIn19--201b61389f5c7d6e00d16f71942f9667002f105f)[0m
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 6.7ms | Allocations: 11170)
+
+
+Started PUT "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlid1k2QmtWVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9UWTI5dWRHVnVkRjlzWlc1bmRHaHBBd1NIR3pvTlkyaGxZMnR6ZFcxSkloMUlaRmw0Vm1kRVExTjFlbTQwWjJGa2VIZFVWblZCUFQwR093WlUiLCJleHAiOiIyMDIwLTA3LTIxVDAzOjUzOjMyLjA4OFoiLCJwdXIiOiJibG9iX3Rva2VuIn19--201b61389f5c7d6e00d16f71942f9667002f105f" for ::1 at 2020-07-20 23:48:32 -0400
+Processing by ActiveStorage::DiskController#update as */*
+  Parameters: {"encoded_token"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlid1k2QmtWVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9UWTI5dWRHVnVkRjlzWlc1bmRHaHBBd1NIR3pvTlkyaGxZMnR6ZFcxSkloMUlaRmw0Vm1kRVExTjFlbTQwWjJGa2VIZFVWblZCUFQwR093WlUiLCJleHAiOiIyMDIwLTA3LTIxVDAzOjUzOjMyLjA4OFoiLCJwdXIiOiJibG9iX3Rva2VuIn19--201b61389f5c7d6e00d16f71942f9667002f105f"}
+[36m  Disk Storage (4.8ms) [0m[32mUploaded file to key: vnr81rj73jigwfhz7t1qydu3b1ro (checksum: HdYxVgDCSuzn4gadxwTVuA==)[0m
+No template found for ActiveStorage::DiskController#update, rendering head :no_content
+Completed 204 No Content in 7ms (ActiveRecord: 0.0ms | Allocations: 3714)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b/IMG_1242-2.jpg" for ::1 at 2020-07-20 23:48:32 -0400
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b", "filename"=>"IMG_1242-2"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: vnr81rj73jigwfhz7t1qydu3b1ro (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlid1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUjJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWtsTlIxOHhNalF5TFRJdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRKVFVkZk1USTBNaTB5TG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVSIsImV4cCI6IjIwMjAtMDctMjFUMDM6NTM6MzIuMTkzWiIsInB1ciI6ImJsb2Jfa2V5In19--363309f2440ae813f39cdbe420d31a8f965e92b1/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlid1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUjJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWtsTlIxOHhNalF5TFRJdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRKVFVkZk1USTBNaTB5TG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVSIsImV4cCI6IjIwMjAtMDctMjFUMDM6NTM6MzIuMTkzWiIsInB1ciI6ImJsb2Jfa2V5In19--363309f2440ae813f39cdbe420d31a8f965e92b1/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms | Allocations: 2074)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlid1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUjJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWtsTlIxOHhNalF5TFRJdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRKVFVkZk1USTBNaTB5TG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVSIsImV4cCI6IjIwMjAtMDctMjFUMDM6NTM6MzIuMTkzWiIsInB1ciI6ImJsb2Jfa2V5In19--363309f2440ae813f39cdbe420d31a8f965e92b1/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg" for ::1 at 2020-07-20 23:48:32 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"IMG_1242-2.jpg\"; filename*=UTF-8''IMG_1242-2.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlid1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUjJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWtsTlIxOHhNalF5TFRJdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRKVFVkZk1USTBNaTB5TG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVSIsImV4cCI6IjIwMjAtMDctMjFUMDM6NTM6MzIuMTkzWiIsInB1ciI6ImJsb2Jfa2V5In19--363309f2440ae813f39cdbe420d31a8f965e92b1", "filename"=>"IMG_1242-2"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 439)
+
+
+Started PATCH "/posts/2" for ::1 at 2020-07-20 23:48:38 -0400
+Processing by PostsController#update as HTML
+  Parameters: {"authenticity_token"=>"yrmVzmw2q9HzgudI14EQjsAkJU3QA3enT6/bMcTE63IzRgdwftSlpePEB+DDJDnD2RaHnbFMJQaAik6tRSvp5A==", "post"=>{"title"=>"This is a test post!", "body"=>"<div>ksndmfsd<br><br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id semper risus in hendrerit gravida. Libero nunc consequat interdum varius sit. Eu volutpat odio facilisis mauris sit amet. Diam sit amet nisl suscipit. Lobortis mattis aliquam faucibus purus in massa tempor. Sed libero enim sed faucibus turpis in eu mi bibendum. Consequat mauris nunc congue nisi. Pretium vulputate sapien nec sagittis aliquam malesuada. Morbi tristique senectus et netus et malesuada fames ac turpis. At risus viverra adipiscing at in tellus. Tempus quam pellentesque nec nam aliquam sem et tortor. Sed vulputate mi sit amet mauris commodo quis imperdiet. Massa tempor nec feugiat nisl pretium fusce id. Nunc aliquet bibendum enim facilisis gravida. Mi bibendum neque egestas congue quisque egestas. Morbi non arcu risus quis.<br><br><figure data-trix-attachment=\"{&quot;contentType&quot;:&quot;image/jpeg&quot;,&quot;filename&quot;:&quot;IMG_1242-2.jpg&quot;,&quot;filesize&quot;:1804036,&quot;height&quot;:1365,&quot;sgid&quot;:&quot;BAh7CEkiCGdpZAY6BkVUSSJCZ2lkOi8vYWN0aW9uLXRleHQtdmlkZW8tYmxvZy9BY3RpdmVTdG9yYWdlOjpCbG9iLzE_ZXhwaXJlc19pbgY7AFRJIgxwdXJwb3NlBjsAVEkiD2F0dGFjaGFibGUGOwBUSSIPZXhwaXJlc19hdAY7AFQw--d89256656f58fe8b21b9e246c11df9f4f7f71790&quot;,&quot;url&quot;:&quot;http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b/IMG_1242-2.jpg&quot;,&quot;width&quot;:2048}\" data-trix-content-type=\"image/jpeg\" data-trix-attributes=\"{&quot;presentation&quot;:&quot;gallery&quot;}\" class=\"attachment attachment--preview attachment--jpg\"><img src=\"http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b/IMG_1242-2.jpg\" width=\"2048\" height=\"1365\"><figcaption class=\"attachment__caption\"><span class=\"attachment__name\">IMG_1242-2.jpg</span> <span class=\"attachment__size\">1.72 MB</span></figcaption></figure><br><br></div><div><br><em>Porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Varius morbi enim nunc faucibus. Enim ut sem viverra aliquet eget sit amet tellus cras. Ipsum dolor sit amet consectetur adipiscing elit. Eget est lorem ipsum dolor sit amet. Lectus arcu bibendum at varius. Cras semper auctor neque vitae. Cursus euismod quis viverra nibh cras pulvinar. Ut sem viverra aliquet eget sit amet tellus cras. Fames ac turpis egestas sed tempus urna et. Pellentesque diam volutpat commodo sed. Nisl rhoncus mattis rhoncus urna neque. In ornare quam viverra orci sagittis eu. Amet nulla facilisi morbi tempus iaculis. Tincidunt arcu non sodales neque sodales. Neque gravida in fermentum et sollicitudin ac orci phasellus. Tincidunt vitae semper quis lectus. Quis varius quam quisque id diam vel quam. Malesuada nunc vel risus commodo. Sociis natoque penatibus et magnis dis parturient montes nascetur.</em><br><br></div><div><br><strong>Faucibus pulvinar elementum integer enim neque volutpat ac. Nunc aliquet bibendum enim facilisis gravida neque convallis a. Sed pulvinar proin gravida hendrerit lectus. Quam elementum pulvinar etiam non. Lacus laoreet non curabitur gravida arcu ac. Enim ut tellus elementum sagittis. Sem viverra aliquet eget sit amet. Egestas maecenas pharetra convallis posuere morbi leo urna molestie at. Ornare suspendisse sed nisi lacus sed viverra. Morbi tincidunt ornare massa eget egestas.</strong><br><br></div><div><br>Purus non enim praesent elementum facilisis leo vel. Proin fermentum leo vel orci. Nibh venenatis cras sed felis eget velit aliquet. Orci eu lobortis elementum nibh tellus molestie nunc non. Sit amet porttitor eget dolor morbi non. Vel turpis nunc eget lorem dolor sed. Molestie at elementum eu facilisis sed odio morbi quis. Viverra nibh cras pulvinar mattis nunc. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum. A condimentum vitae sapien pellentesque habitant morbi tristique senectus.<br><br></div><div><br>Vestibulum morbi blandit cursus risus at ultrices. Consectetur lorem donec massa sapien faucibus. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus. Velit egestas dui id ornare arcu. Suspendisse in est ante in nibh mauris cursus. Interdum varius sit amet mattis vulputate enim nulla. Urna id volutpat lacus laoreet non curabitur. Arcu bibendum at varius vel. Ultrices sagittis orci a scelerisque purus semper. Ipsum faucibus vitae aliquet nec. Scelerisque viverra mauris in aliquam. Sed nisi lacus sed viverra tellus in hac habitasse platea. Ultrices dui sapien eget mi proin sed libero. Viverra nam libero justo laoreet sit. Ullamcorper velit sed ullamcorper morbi tincidunt. Nulla pharetra diam sit amet nisl suscipit.<br><br></div>"}, "commit"=>"Update Post", "id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mActionText::RichText Load (0.1ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 0.9ms | Allocations: 820)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 5.3ms | Allocations: 3082)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 10.2ms | Allocations: 7548)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 0.8ms | Allocations: 813)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.7ms | Allocations: 482)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 4.7ms | Allocations: 4644)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 0.8ms | Allocations: 811)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.9ms | Allocations: 482)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 5.0ms | Allocations: 4808)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 0.9ms | Allocations: 811)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.5ms | Allocations: 482)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 4.3ms | Allocations: 4870)
+  [1m[36mActionText::RichText Update (0.3ms)[0m  [1m[33mUPDATE "action_text_rich_texts" SET "body" = ?, "updated_at" = ? WHERE "action_text_rich_texts"."id" = ?[0m  [["body", "<div>ksndmfsd<br><br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id semper risus in hendrerit gravida. Libero nunc consequat interdum varius sit. Eu volutpat odio facilisis mauris sit amet. Diam sit amet nisl suscipit. Lobortis mattis aliquam faucibus purus in massa tempor. Sed libero enim sed faucibus turpis in eu mi bibendum. Consequat mauris nunc congue nisi. Pretium vulputate sapien nec sagittis aliquam malesuada. Morbi tristique senectus et netus et malesuada fames ac turpis. At risus viverra adipiscing at in tellus. Tempus quam pellentesque nec nam aliquam sem et tortor. Sed vulputate mi sit amet mauris commodo quis imperdiet. Massa tempor nec feugiat nisl pretium fusce id. Nunc aliquet bibendum enim facilisis gravida. Mi bibendum neque egestas congue quisque egestas. Morbi non arcu risus quis.<br><br><action-text-attachment sgid=\"BAh7CEkiCGdpZAY6BkVUSSJCZ2lkOi8vYWN0aW9uLXRleHQtdmlkZW8tYmxvZy9BY3RpdmVTdG9yYWdlOjpCbG9iLzE_ZXhwaXJlc19pbgY7AFRJIgxwdXJwb3NlBjsAVEkiD2F0dGFjaGFibGUGOwBUSSIPZXhwaXJlc19hdAY7AFQw--d89256656f58fe8b21b9e246c11df9f4f7f71790\" content-type=\"image/jpeg\" url=\"http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b/IMG_1242-2.jpg\" filename=\"IMG_1242-2.jpg\" filesize=\"1804036\" width=\"2048\" height=\"1365\" presentation=\"gallery\"></action-text-attachment><br><br></div><div><br><em>Porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Varius morbi enim nunc faucibus. Enim ut sem viverra aliquet eget sit amet tellus cras. Ipsum dolor sit amet consectetur adipiscing elit. Eget est lorem ipsum dolor sit amet. Lectus arcu bibendum at varius. Cras semper auctor neque vitae. Cursus euismod quis viverra nibh cras pulvinar. Ut sem viverra aliquet eget sit amet tellus cras. Fames ac turpis egestas sed tempus urna et. Pellentesque diam volutpat commodo sed. Nisl rhoncus mattis rhoncus urna neque. In ornare quam viverra orci sagittis eu. Amet nulla facilisi morbi tempus iaculis. Tincidunt arcu non sodales neque sodales. Neque gravida in fermentum et sollicitudin ac orci phasellus. Tincidunt vitae semper quis lectus. Quis varius quam quisque id diam vel quam. Malesuada nunc vel risus commodo. Sociis natoque penatibus et magnis dis parturient montes nascetur.</em><br><br></div><div><br><strong>Faucibus pulvinar elementum integer enim neque volutpat ac. Nunc aliquet bibendum enim facilisis gravida neque convallis a. Sed pulvinar proin gravida hendrerit lectus. Quam elementum pulvinar etiam non. Lacus laoreet non curabitur gravida arcu ac. Enim ut tellus elementum sagittis. Sem viverra aliquet eget sit amet. Egestas maecenas pharetra convallis posuere morbi leo urna molestie at. Ornare suspendisse sed nisi lacus sed viverra. Morbi tincidunt ornare massa eget egestas.</strong><br><br></div><div><br>Purus non enim praesent elementum facilisis leo vel. Proin fermentum leo vel orci. Nibh venenatis cras sed felis eget velit aliquet. Orci eu lobortis elementum nibh tellus molestie nunc non. Sit amet porttitor eget dolor morbi non. Vel turpis nunc eget lorem dolor sed. Molestie at elementum eu facilisis sed odio morbi quis. Viverra nibh cras pulvinar mattis nunc. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum. A condimentum vitae sapien pellentesque habitant morbi tristique senectus.<br><br></div><div><br>Vestibulum morbi blandit cursus risus at ultrices. Consectetur lorem donec massa sapien faucibus. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus. Velit egestas dui id ornare arcu. Suspendisse in est ante in nibh mauris cursus. Interdum varius sit amet mattis vulputate enim nulla. Urna id volutpat lacus laoreet non curabitur. Arcu bibendum at varius vel. Ultrices sagittis orci a scelerisque purus semper. Ipsum faucibus vitae aliquet nec. Scelerisque viverra mauris in aliquam. Sed nisi lacus sed viverra tellus in hac habitasse platea. Ultrices dui sapien eget mi proin sed libero. Viverra nam libero justo laoreet sit. Ullamcorper velit sed ullamcorper morbi tincidunt. Nulla pharetra diam sit amet nisl suscipit.<br><br></div>"], ["updated_at", "2020-07-21 03:48:38.137911"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 1.3ms | Allocations: 811)
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.9ms | Allocations: 482)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 5.6ms | Allocations: 4970)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 0.8ms | Allocations: 811)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.8ms | Allocations: 483)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 4.9ms | Allocations: 4940)
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 1], ["record_type", "ActionText::RichText"], ["name", "embeds"]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "embeds"], ["record_type", "ActionText::RichText"], ["record_id", 1], ["blob_id", 1], ["created_at", "2020-07-21 03:48:38.174313"]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mActionText::RichText Update (0.1ms)[0m  [1m[33mUPDATE "action_text_rich_texts" SET "updated_at" = ? WHERE "action_text_rich_texts"."id" = ?[0m  [["updated_at", "2020-07-21 03:48:38.176116"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2020-07-21 03:48:38.180028"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true}"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 85bbf500-9d58-43f5-9524-51f9730d6cd0) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007f783c00c510 @uri=#<URI::GID gid://action-text-video-blog/ActiveStorage::Blob/1>>
+Redirected to http://localhost:3000/posts/2
+Completed 302 Found in 146ms (ActiveRecord: 15.2ms | Allocations: 111073)
+
+
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [85bbf500-9d58-43f5-9524-51f9730d6cd0] Performing ActiveStorage::AnalyzeJob (Job ID: 85bbf500-9d58-43f5-9524-51f9730d6cd0) from Async(active_storage_analysis) enqueued at 2020-07-21T03:48:38Z with arguments: #<GlobalID:0x00007f78340d2088 @uri=#<URI::GID gid://action-text-video-blog/ActiveStorage::Blob/1>>
+Started GET "/posts/2" for ::1 at 2020-07-20 23:48:38 -0400
+[ActiveJob] [ActiveStorage::AnalyzeJob] [85bbf500-9d58-43f5-9524-51f9730d6cd0] [36m  Disk Storage (2.4ms) [0m[34mDownloaded file from key: vnr81rj73jigwfhz7t1qydu3b1ro[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 3], ["updated_at", "2020-07-21 03:48:38.256305"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [85bbf500-9d58-43f5-9524-51f9730d6cd0] Skipping image analysis because the mini_magick gem isn't installed
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+[ActiveJob] [ActiveStorage::AnalyzeJob] [85bbf500-9d58-43f5-9524-51f9730d6cd0]   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [85bbf500-9d58-43f5-9524-51f9730d6cd0]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+[ActiveJob] [ActiveStorage::AnalyzeJob] [85bbf500-9d58-43f5-9524-51f9730d6cd0]   [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  Rendering posts/show.html.erb within layouts/application
+[ActiveJob] [ActiveStorage::AnalyzeJob] [85bbf500-9d58-43f5-9524-51f9730d6cd0] Performed ActiveStorage::AnalyzeJob (Job ID: 85bbf500-9d58-43f5-9524-51f9730d6cd0) from Async(active_storage_analysis) in 34.3ms
+  [1m[36mActionText::RichText Load (0.1ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.9ms | Allocations: 485)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 5.6ms | Allocations: 4389)
+  Rendered posts/show.html.erb within layouts/application (Duration: 9.8ms | Allocations: 6066)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 14.5ms | ActiveRecord: 6.8ms | Allocations: 18536)
+
+
+Started GET "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9VY21WemFYcGxYM1J2WDJ4cGJXbDBXd2RwQWdBRWFRSUFBdz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--42f2331a821d797606bb2d6257819931318bd4ef/IMG_1242-2.jpg" for ::1 at 2020-07-20 23:48:38 -0400
+Processing by ActiveStorage::RepresentationsController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b", "variation_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9VY21WemFYcGxYM1J2WDJ4cGJXbDBXd2RwQWdBRWFRSUFBdz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--42f2331a821d797606bb2d6257819931318bd4ef", "filename"=>"IMG_1242-2"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (0.0ms) [0m[34mChecked if file exists at key: variants/vnr81rj73jigwfhz7t1qydu3b1ro/ede3ec2b1ca41e19e03906cdfb701ea9fabc72a1e28af0adb2efefdb2bdbd5d9 (no)[0m
+[36m  Disk Storage (1.5ms) [0m[34mDownloaded file from key: vnr81rj73jigwfhz7t1qydu3b1ro[0m
+DEPRECATION WARNING: Generating image variants will require the image_processing gem in Rails 6.1. Please add `gem 'image_processing', '~> 1.2'` to your Gemfile. (called from transformer at /home/dean/.rvm/gems/ruby-2.7.1/gems/activestorage-6.0.3.2/app/models/active_storage/variation.rb:64)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.1ms | Allocations: 3572)
+
+
+  
+LoadError (cannot load such file -- mini_magick):
+  
+bootsnap (1.4.6) lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:23:in `require'
+bootsnap (1.4.6) lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:23:in `block in require_with_bootsnap_lfi'
+bootsnap (1.4.6) lib/bootsnap/load_path_cache/loaded_features_index.rb:89:in `register'
+bootsnap (1.4.6) lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:22:in `require_with_bootsnap_lfi'
+bootsnap (1.4.6) lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:41:in `rescue in require'
+bootsnap (1.4.6) lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:27:in `require'
+zeitwerk (2.4.0) lib/zeitwerk/kernel.rb:34:in `require'
+activestorage (6.0.3.2) lib/active_storage/transformers/mini_magick_transformer.rb:3:in `<main>'
+bootsnap (1.4.6) lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:23:in `require'
+bootsnap (1.4.6) lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:23:in `block in require_with_bootsnap_lfi'
+bootsnap (1.4.6) lib/bootsnap/load_path_cache/loaded_features_index.rb:92:in `register'
+bootsnap (1.4.6) lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:22:in `require_with_bootsnap_lfi'
+bootsnap (1.4.6) lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:31:in `require'
+zeitwerk (2.4.0) lib/zeitwerk/kernel.rb:34:in `require'
+activestorage (6.0.3.2) app/models/active_storage/variation.rb:72:in `rescue in transformer'
+activestorage (6.0.3.2) app/models/active_storage/variation.rb:64:in `transformer'
+activestorage (6.0.3.2) app/models/active_storage/variation.rb:52:in `block in transform'
+activesupport (6.0.3.2) lib/active_support/notifications.rb:182:in `instrument'
+activestorage (6.0.3.2) app/models/active_storage/variation.rb:51:in `transform'
+activestorage (6.0.3.2) app/models/active_storage/variant.rb:105:in `transform'
+activestorage (6.0.3.2) app/models/active_storage/variant.rb:100:in `block in process'
+activestorage (6.0.3.2) lib/active_storage/downloader.rb:15:in `block in open'
+activestorage (6.0.3.2) lib/active_storage/downloader.rb:24:in `open_tempfile'
+activestorage (6.0.3.2) lib/active_storage/downloader.rb:12:in `open'
+activestorage (6.0.3.2) lib/active_storage/service.rb:86:in `open'
+activestorage (6.0.3.2) app/models/active_storage/blob.rb:219:in `open'
+activestorage (6.0.3.2) app/models/active_storage/variant.rb:99:in `process'
+activestorage (6.0.3.2) app/models/active_storage/variant.rb:67:in `processed'
+activestorage (6.0.3.2) app/controllers/active_storage/representations_controller.rb:12:in `show'
+actionpack (6.0.3.2) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.3.2) lib/abstract_controller/base.rb:195:in `process_action'
+actionpack (6.0.3.2) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.3.2) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:135:in `run_callbacks'
+actionpack (6.0.3.2) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.2) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.2) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.2) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.2) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.2) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.2) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.2) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.2) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/posts/2" for ::1 at 2020-07-20 23:49:59 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.3ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 4], ["updated_at", "2020-07-21 03:49:59.440340"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActionText::RichText Load (0.1ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 3.2ms | Allocations: 2977)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 18.7ms | Allocations: 16500)
+  Rendered posts/show.html.erb within layouts/application (Duration: 63.2ms | Allocations: 28518)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 114ms (Views: 73.4ms | ActiveRecord: 8.9ms | Allocations: 45284)
+
+
+Started GET "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9VY21WemFYcGxYM1J2WDJ4cGJXbDBXd2RwQWdBRWFRSUFBdz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--42f2331a821d797606bb2d6257819931318bd4ef/IMG_1242-2.jpg" for ::1 at 2020-07-20 23:49:59 -0400
+Processing by ActiveStorage::RepresentationsController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b", "variation_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9VY21WemFYcGxYM1J2WDJ4cGJXbDBXd2RwQWdBRWFRSUFBdz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--42f2331a821d797606bb2d6257819931318bd4ef", "filename"=>"IMG_1242-2"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (0.0ms) [0m[34mChecked if file exists at key: variants/vnr81rj73jigwfhz7t1qydu3b1ro/ede3ec2b1ca41e19e03906cdfb701ea9fabc72a1e28af0adb2efefdb2bdbd5d9 (no)[0m
+[36m  Disk Storage (1.4ms) [0m[34mDownloaded file from key: vnr81rj73jigwfhz7t1qydu3b1ro[0m
+[36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: variants/vnr81rj73jigwfhz7t1qydu3b1ro/ede3ec2b1ca41e19e03906cdfb701ea9fabc72a1e28af0adb2efefdb2bdbd5d9[0m
+[36m  Disk Storage (0.9ms) [0m[34mGenerated URL for file at key: variants/vnr81rj73jigwfhz7t1qydu3b1ro/ede3ec2b1ca41e19e03906cdfb701ea9fabc72a1e28af0adb2efefdb2bdbd5d9 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU0OjU5LjY5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2c59e997dd903086688f7aff83c7b105aae3ff39/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU0OjU5LjY5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2c59e997dd903086688f7aff83c7b105aae3ff39/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg
+Completed 302 Found in 134ms (ActiveRecord: 0.1ms | Allocations: 12984)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU0OjU5LjY5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2c59e997dd903086688f7aff83c7b105aae3ff39/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg" for ::1 at 2020-07-20 23:49:59 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"IMG_1242-2.jpg\"; filename*=UTF-8''IMG_1242-2.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU0OjU5LjY5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2c59e997dd903086688f7aff83c7b105aae3ff39", "filename"=>"IMG_1242-2"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 473)
+
+
+Started GET "/posts/2/edit" for ::1 at 2020-07-20 23:50:36 -0400
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  Rendering posts/edit.html.erb within layouts/application
+  [1m[36mActionText::RichText Load (0.1ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
+  ↳ app/views/posts/_form.html.erb:21
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_form.html.erb:21
+  Rendered posts/_form.html.erb (Duration: 13.2ms | Allocations: 8543)
+  Rendered posts/edit.html.erb within layouts/application (Duration: 14.0ms | Allocations: 8921)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 17.1ms | ActiveRecord: 0.3ms | Allocations: 13367)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlid1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUjJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWtsTlIxOHhNalF5TFRJdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRKVFVkZk1USTBNaTB5TG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVSIsImV4cCI6IjIwMjAtMDctMjFUMDM6NTM6MzIuMTkzWiIsInB1ciI6ImJsb2Jfa2V5In19--363309f2440ae813f39cdbe420d31a8f965e92b1/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg" for ::1 at 2020-07-20 23:50:36 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"IMG_1242-2.jpg\"; filename*=UTF-8''IMG_1242-2.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlid1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUjJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWtsTlIxOHhNalF5TFRJdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWRKVFVkZk1USTBNaTB5TG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVSIsImV4cCI6IjIwMjAtMDctMjFUMDM6NTM6MzIuMTkzWiIsInB1ciI6ImJsb2Jfa2V5In19--363309f2440ae813f39cdbe420d31a8f965e92b1", "filename"=>"IMG_1242-2"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 437)
+
+
+Started POST "/rails/active_storage/direct_uploads" for ::1 at 2020-07-20 23:50:47 -0400
+Processing by ActiveStorage::DirectUploadsController#create as JSON
+  Parameters: {"blob"=>{"filename"=>"Intro.mp4", "content_type"=>"video/mp4", "byte_size"=>7400474, "checksum"=>"Sa/xWfAGObVczyyn97fYPw=="}, "direct_upload"=>{"blob"=>{"filename"=>"Intro.mp4", "content_type"=>"video/mp4", "byte_size"=>7400474, "checksum"=>"Sa/xWfAGObVczyyn97fYPw=="}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["key", "k6p9t41zsn53ncxmlgoa4c06wpb8"], ["filename", "Intro.mp4"], ["content_type", "video/mp4"], ["byte_size", 7400474], ["checksum", "Sa/xWfAGObVczyyn97fYPw=="], ["created_at", "2020-07-21 03:50:47.923575"]]
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+[36m  Disk Storage (0.3ms) [0m[34mGenerated URL for file at key: k6p9t41zsn53ncxmlgoa4c06wpb8 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1MmFXUmxieTl0Y0RRR093WlVPaE5qYjI1MFpXNTBYMnhsYm1kMGFHa0RHdXh3T2cxamFHVmphM04xYlVraUhWTmhMM2hYWmtGSFQySldZM3A1ZVc0NU4yWlpVSGM5UFFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU1OjQ3LjkzNloiLCJwdXIiOiJibG9iX3Rva2VuIn19--a5fbe49aeddc03ded81e90b64b834a3de319be60)[0m
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 8.2ms | Allocations: 6376)
+
+
+Started PUT "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1MmFXUmxieTl0Y0RRR093WlVPaE5qYjI1MFpXNTBYMnhsYm1kMGFHa0RHdXh3T2cxamFHVmphM04xYlVraUhWTmhMM2hYWmtGSFQySldZM3A1ZVc0NU4yWlpVSGM5UFFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU1OjQ3LjkzNloiLCJwdXIiOiJibG9iX3Rva2VuIn19--a5fbe49aeddc03ded81e90b64b834a3de319be60" for ::1 at 2020-07-20 23:50:47 -0400
+Processing by ActiveStorage::DiskController#update as */*
+  Parameters: {"encoded_token"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1MmFXUmxieTl0Y0RRR093WlVPaE5qYjI1MFpXNTBYMnhsYm1kMGFHa0RHdXh3T2cxamFHVmphM04xYlVraUhWTmhMM2hYWmtGSFQySldZM3A1ZVc0NU4yWlpVSGM5UFFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU1OjQ3LjkzNloiLCJwdXIiOiJibG9iX3Rva2VuIn19--a5fbe49aeddc03ded81e90b64b834a3de319be60"}
+[36m  Disk Storage (14.5ms) [0m[32mUploaded file to key: k6p9t41zsn53ncxmlgoa4c06wpb8 (checksum: Sa/xWfAGObVczyyn97fYPw==)[0m
+No template found for ActiveStorage::DiskController#update, rendering head :no_content
+Completed 204 No Content in 17ms (ActiveRecord: 0.0ms | Allocations: 3714)
+
+
+Started PATCH "/posts/2" for ::1 at 2020-07-20 23:50:58 -0400
+Processing by PostsController#update as HTML
+  Parameters: {"authenticity_token"=>"7QdyMz+tuYk9AfSPJVbv5Zaxiw4uax3SzzUupENwdhMU+OCNLU+3/S1HFCcx88aoj4Mp3k8kT3MAELs4wp90hQ==", "post"=>{"title"=>"This is a test post!", "body"=>"<div>ksndmfsd<br><br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id semper risus in hendrerit gravida. Libero nunc consequat interdum varius sit. Eu volutpat odio facilisis mauris sit amet. Diam sit amet nisl suscipit. Lobortis mattis aliquam faucibus purus in massa tempor. Sed libero enim sed faucibus turpis in eu mi bibendum. Consequat mauris nunc congue nisi. Pretium vulputate sapien nec sagittis aliquam malesuada. Morbi tristique senectus et netus et malesuada fames ac turpis. At risus viverra adipiscing at in tellus. Tempus quam pellentesque nec nam aliquam sem et tortor. Sed vulputate mi sit amet mauris commodo quis imperdiet. Massa tempor nec feugiat nisl pretium fusce id. Nunc aliquet bibendum enim facilisis gravida. Mi bibendum neque egestas congue quisque egestas. Morbi non arcu risus quis.<br><br><figure data-trix-attachment=\"{&quot;contentType&quot;:&quot;image/jpeg&quot;,&quot;filename&quot;:&quot;IMG_1242-2.jpg&quot;,&quot;filesize&quot;:1804036,&quot;height&quot;:1365,&quot;previewable&quot;:true,&quot;sgid&quot;:&quot;BAh7CEkiCGdpZAY6BkVUSSJCZ2lkOi8vYWN0aW9uLXRleHQtdmlkZW8tYmxvZy9BY3RpdmVTdG9yYWdlOjpCbG9iLzE_ZXhwaXJlc19pbgY7AFRJIgxwdXJwb3NlBjsAVEkiD2F0dGFjaGFibGUGOwBUSSIPZXhwaXJlc19hdAY7AFQw--d89256656f58fe8b21b9e246c11df9f4f7f71790&quot;,&quot;url&quot;:&quot;http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b/IMG_1242-2.jpg&quot;,&quot;width&quot;:2048}\" data-trix-content-type=\"image/jpeg\" data-trix-attributes=\"{&quot;presentation&quot;:&quot;gallery&quot;}\" class=\"attachment attachment--preview attachment--jpg\"><img src=\"http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b/IMG_1242-2.jpg\" width=\"2048\" height=\"1365\"><figcaption class=\"attachment__caption\"><span class=\"attachment__name\">IMG_1242-2.jpg</span> <span class=\"attachment__size\">1.72 MB</span></figcaption></figure><br><br><figure data-trix-attachment=\"{&quot;contentType&quot;:&quot;video/mp4&quot;,&quot;filename&quot;:&quot;Intro.mp4&quot;,&quot;filesize&quot;:7400474,&quot;sgid&quot;:&quot;BAh7CEkiCGdpZAY6BkVUSSJCZ2lkOi8vYWN0aW9uLXRleHQtdmlkZW8tYmxvZy9BY3RpdmVTdG9yYWdlOjpCbG9iLzI_ZXhwaXJlc19pbgY7AFRJIgxwdXJwb3NlBjsAVEkiD2F0dGFjaGFibGUGOwBUSSIPZXhwaXJlc19hdAY7AFQw--8fb8ab503514fdaddb79393016552bf3710c61b5&quot;,&quot;url&quot;:&quot;http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--36dba548529696199ce98210dd6b2d609150a95e/Intro.mp4&quot;}\" data-trix-content-type=\"video/mp4\" class=\"attachment attachment--file attachment--mp4\"><figcaption class=\"attachment__caption\"><span class=\"attachment__name\">Intro.mp4</span> <span class=\"attachment__size\">7.06 MB</span></figcaption></figure></div><div><br><em>Porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Varius morbi enim nunc faucibus. Enim ut sem viverra aliquet eget sit amet tellus cras. Ipsum dolor sit amet consectetur adipiscing elit. Eget est lorem ipsum dolor sit amet. Lectus arcu bibendum at varius. Cras semper auctor neque vitae. Cursus euismod quis viverra nibh cras pulvinar. Ut sem viverra aliquet eget sit amet tellus cras. Fames ac turpis egestas sed tempus urna et. Pellentesque diam volutpat commodo sed. Nisl rhoncus mattis rhoncus urna neque. In ornare quam viverra orci sagittis eu. Amet nulla facilisi morbi tempus iaculis. Tincidunt arcu non sodales neque sodales. Neque gravida in fermentum et sollicitudin ac orci phasellus. Tincidunt vitae semper quis lectus. Quis varius quam quisque id diam vel quam. Malesuada nunc vel risus commodo. Sociis natoque penatibus et magnis dis parturient montes nascetur.</em><br><br></div><div><br><strong>Faucibus pulvinar elementum integer enim neque volutpat ac. Nunc aliquet bibendum enim facilisis gravida neque convallis a. Sed pulvinar proin gravida hendrerit lectus. Quam elementum pulvinar etiam non. Lacus laoreet non curabitur gravida arcu ac. Enim ut tellus elementum sagittis. Sem viverra aliquet eget sit amet. Egestas maecenas pharetra convallis posuere morbi leo urna molestie at. Ornare suspendisse sed nisi lacus sed viverra. Morbi tincidunt ornare massa eget egestas.</strong><br><br></div><div><br>Purus non enim praesent elementum facilisis leo vel. Proin fermentum leo vel orci. Nibh venenatis cras sed felis eget velit aliquet. Orci eu lobortis elementum nibh tellus molestie nunc non. Sit amet porttitor eget dolor morbi non. Vel turpis nunc eget lorem dolor sed. Molestie at elementum eu facilisis sed odio morbi quis. Viverra nibh cras pulvinar mattis nunc. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum. A condimentum vitae sapien pellentesque habitant morbi tristique senectus.<br><br></div><div><br>Vestibulum morbi blandit cursus risus at ultrices. Consectetur lorem donec massa sapien faucibus. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus. Velit egestas dui id ornare arcu. Suspendisse in est ante in nibh mauris cursus. Interdum varius sit amet mattis vulputate enim nulla. Urna id volutpat lacus laoreet non curabitur. Arcu bibendum at varius vel. Ultrices sagittis orci a scelerisque purus semper. Ipsum faucibus vitae aliquet nec. Scelerisque viverra mauris in aliquam. Sed nisi lacus sed viverra tellus in hac habitasse platea. Ultrices dui sapien eget mi proin sed libero. Viverra nam libero justo laoreet sit. Ullamcorper velit sed ullamcorper morbi tincidunt. Nulla pharetra diam sit amet nisl suscipit.<br><br></div>"}, "commit"=>"Update Post", "id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mActionText::RichText Load (0.0ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.8ms | Allocations: 495)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 4.7ms | Allocations: 4774)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.4ms | Allocations: 482)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.5ms | Allocations: 235)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 43.8ms | Allocations: 8146)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.7ms | Allocations: 482)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 5.3ms | Allocations: 4718)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.5ms | Allocations: 482)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.2ms | Allocations: 235)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 6.5ms | Allocations: 7944)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.6ms | Allocations: 482)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 4.6ms | Allocations: 4882)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.5ms | Allocations: 482)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.2ms | Allocations: 235)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 6.7ms | Allocations: 8304)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.5ms | Allocations: 482)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 4.4ms | Allocations: 4943)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.5ms | Allocations: 482)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.4ms | Allocations: 235)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 7.1ms | Allocations: 8424)
+  [1m[36mActionText::RichText Update (0.3ms)[0m  [1m[33mUPDATE "action_text_rich_texts" SET "body" = ?, "updated_at" = ? WHERE "action_text_rich_texts"."id" = ?[0m  [["body", "<div>ksndmfsd<br><br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id semper risus in hendrerit gravida. Libero nunc consequat interdum varius sit. Eu volutpat odio facilisis mauris sit amet. Diam sit amet nisl suscipit. Lobortis mattis aliquam faucibus purus in massa tempor. Sed libero enim sed faucibus turpis in eu mi bibendum. Consequat mauris nunc congue nisi. Pretium vulputate sapien nec sagittis aliquam malesuada. Morbi tristique senectus et netus et malesuada fames ac turpis. At risus viverra adipiscing at in tellus. Tempus quam pellentesque nec nam aliquam sem et tortor. Sed vulputate mi sit amet mauris commodo quis imperdiet. Massa tempor nec feugiat nisl pretium fusce id. Nunc aliquet bibendum enim facilisis gravida. Mi bibendum neque egestas congue quisque egestas. Morbi non arcu risus quis.<br><br><action-text-attachment sgid=\"BAh7CEkiCGdpZAY6BkVUSSJCZ2lkOi8vYWN0aW9uLXRleHQtdmlkZW8tYmxvZy9BY3RpdmVTdG9yYWdlOjpCbG9iLzE_ZXhwaXJlc19pbgY7AFRJIgxwdXJwb3NlBjsAVEkiD2F0dGFjaGFibGUGOwBUSSIPZXhwaXJlc19hdAY7AFQw--d89256656f58fe8b21b9e246c11df9f4f7f71790\" content-type=\"image/jpeg\" url=\"http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b/IMG_1242-2.jpg\" filename=\"IMG_1242-2.jpg\" filesize=\"1804036\" width=\"2048\" height=\"1365\" previewable=\"true\" presentation=\"gallery\"></action-text-attachment><br><br><action-text-attachment sgid=\"BAh7CEkiCGdpZAY6BkVUSSJCZ2lkOi8vYWN0aW9uLXRleHQtdmlkZW8tYmxvZy9BY3RpdmVTdG9yYWdlOjpCbG9iLzI_ZXhwaXJlc19pbgY7AFRJIgxwdXJwb3NlBjsAVEkiD2F0dGFjaGFibGUGOwBUSSIPZXhwaXJlc19hdAY7AFQw--8fb8ab503514fdaddb79393016552bf3710c61b5\" content-type=\"video/mp4\" url=\"http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--36dba548529696199ce98210dd6b2d609150a95e/Intro.mp4\" filename=\"Intro.mp4\" filesize=\"7400474\"></action-text-attachment></div><div><br><em>Porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Varius morbi enim nunc faucibus. Enim ut sem viverra aliquet eget sit amet tellus cras. Ipsum dolor sit amet consectetur adipiscing elit. Eget est lorem ipsum dolor sit amet. Lectus arcu bibendum at varius. Cras semper auctor neque vitae. Cursus euismod quis viverra nibh cras pulvinar. Ut sem viverra aliquet eget sit amet tellus cras. Fames ac turpis egestas sed tempus urna et. Pellentesque diam volutpat commodo sed. Nisl rhoncus mattis rhoncus urna neque. In ornare quam viverra orci sagittis eu. Amet nulla facilisi morbi tempus iaculis. Tincidunt arcu non sodales neque sodales. Neque gravida in fermentum et sollicitudin ac orci phasellus. Tincidunt vitae semper quis lectus. Quis varius quam quisque id diam vel quam. Malesuada nunc vel risus commodo. Sociis natoque penatibus et magnis dis parturient montes nascetur.</em><br><br></div><div><br><strong>Faucibus pulvinar elementum integer enim neque volutpat ac. Nunc aliquet bibendum enim facilisis gravida neque convallis a. Sed pulvinar proin gravida hendrerit lectus. Quam elementum pulvinar etiam non. Lacus laoreet non curabitur gravida arcu ac. Enim ut tellus elementum sagittis. Sem viverra aliquet eget sit amet. Egestas maecenas pharetra convallis posuere morbi leo urna molestie at. Ornare suspendisse sed nisi lacus sed viverra. Morbi tincidunt ornare massa eget egestas.</strong><br><br></div><div><br>Purus non enim praesent elementum facilisis leo vel. Proin fermentum leo vel orci. Nibh venenatis cras sed felis eget velit aliquet. Orci eu lobortis elementum nibh tellus molestie nunc non. Sit amet porttitor eget dolor morbi non. Vel turpis nunc eget lorem dolor sed. Molestie at elementum eu facilisis sed odio morbi quis. Viverra nibh cras pulvinar mattis nunc. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum. A condimentum vitae sapien pellentesque habitant morbi tristique senectus.<br><br></div><div><br>Vestibulum morbi blandit cursus risus at ultrices. Consectetur lorem donec massa sapien faucibus. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus. Velit egestas dui id ornare arcu. Suspendisse in est ante in nibh mauris cursus. Interdum varius sit amet mattis vulputate enim nulla. Urna id volutpat lacus laoreet non curabitur. Arcu bibendum at varius vel. Ultrices sagittis orci a scelerisque purus semper. Ipsum faucibus vitae aliquet nec. Scelerisque viverra mauris in aliquam. Sed nisi lacus sed viverra tellus in hac habitasse platea. Ultrices dui sapien eget mi proin sed libero. Viverra nam libero justo laoreet sit. Ullamcorper velit sed ullamcorper morbi tincidunt. Nulla pharetra diam sit amet nisl suscipit.<br><br></div>"], ["updated_at", "2020-07-21 03:50:58.141662"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.7ms | Allocations: 482)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 4.8ms | Allocations: 5048)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.8ms | Allocations: 482)
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.4ms | Allocations: 235)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 9.2ms | Allocations: 8576)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.8ms | Allocations: 485)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 5.1ms | Allocations: 5016)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.6ms | Allocations: 482)
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.4ms | Allocations: 235)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 9.1ms | Allocations: 8558)
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 1], ["record_type", "ActionText::RichText"], ["name", "embeds"]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "embeds"], ["record_type", "ActionText::RichText"], ["record_id", 1], ["blob_id", 2], ["created_at", "2020-07-21 03:50:58.210046"]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mActionText::RichText Update (0.1ms)[0m  [1m[33mUPDATE "action_text_rich_texts" SET "updated_at" = ? WHERE "action_text_rich_texts"."id" = ?[0m  [["updated_at", "2020-07-21 03:50:58.211596"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2020-07-21 03:50:58.214731"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[35m (8.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true}"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:47:in `block in update'
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 69f2c6b6-f509-4163-b6d6-d5b2855aef1e) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007f7e9803f638 @uri=#<URI::GID gid://action-text-video-blog/ActiveStorage::Blob/2>>
+Redirected to http://localhost:3000/posts/2
+Completed 302 Found in 195ms (ActiveRecord: 15.9ms | Allocations: 144350)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [69f2c6b6-f509-4163-b6d6-d5b2855aef1e] Performing ActiveStorage::AnalyzeJob (Job ID: 69f2c6b6-f509-4163-b6d6-d5b2855aef1e) from Async(active_storage_analysis) enqueued at 2020-07-21T03:50:58Z with arguments: #<GlobalID:0x00007f7ea4217120 @uri=#<URI::GID gid://action-text-video-blog/ActiveStorage::Blob/2>>
+Started GET "/posts/2" for ::1 at 2020-07-20 23:50:58 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 5], ["updated_at", "2020-07-21 03:50:58.256237"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+[ActiveJob] [ActiveStorage::AnalyzeJob] [69f2c6b6-f509-4163-b6d6-d5b2855aef1e] [36m  Disk Storage (8.2ms) [0m[34mDownloaded file from key: k6p9t41zsn53ncxmlgoa4c06wpb8[0m
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActionText::RichText Load (0.1ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.8ms | Allocations: 485)
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.4ms | Allocations: 235)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 9.8ms | Allocations: 7299)
+  Rendered posts/show.html.erb within layouts/application (Duration: 14.0ms | Allocations: 9024)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 28.4ms | ActiveRecord: 6.0ms | Allocations: 16848)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [69f2c6b6-f509-4163-b6d6-d5b2855aef1e] Skipping video analysis because FFmpeg isn't installed
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU0OjU5LjY5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2c59e997dd903086688f7aff83c7b105aae3ff39/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg" for ::1 at 2020-07-20 23:50:58 -0400
+[ActiveJob] [ActiveStorage::AnalyzeJob] [69f2c6b6-f509-4163-b6d6-d5b2855aef1e]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [69f2c6b6-f509-4163-b6d6-d5b2855aef1e]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [69f2c6b6-f509-4163-b6d6-d5b2855aef1e]   [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+Processing by ActiveStorage::DiskController#show as JPEG
+[ActiveJob] [ActiveStorage::AnalyzeJob] [69f2c6b6-f509-4163-b6d6-d5b2855aef1e] Performed ActiveStorage::AnalyzeJob (Job ID: 69f2c6b6-f509-4163-b6d6-d5b2855aef1e) from Async(active_storage_analysis) in 113.85ms
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"IMG_1242-2.jpg\"; filename*=UTF-8''IMG_1242-2.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU0OjU5LjY5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2c59e997dd903086688f7aff83c7b105aae3ff39", "filename"=>"IMG_1242-2"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 423)
+
+
+Started GET "/posts/2" for ::1 at 2020-07-20 23:52:57 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 6], ["updated_at", "2020-07-21 03:52:57.159946"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActionText::RichText Load (0.2ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 1.9ms | Allocations: 787)
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.7ms | Allocations: 526)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 11.0ms | Allocations: 8229)
+  Rendered posts/show.html.erb within layouts/application (Duration: 15.9ms | Allocations: 10590)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 20.3ms | ActiveRecord: 6.8ms | Allocations: 18966)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU0OjU5LjY5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2c59e997dd903086688f7aff83c7b105aae3ff39/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg" for ::1 at 2020-07-20 23:52:57 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"IMG_1242-2.jpg\"; filename*=UTF-8''IMG_1242-2.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU0OjU5LjY5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2c59e997dd903086688f7aff83c7b105aae3ff39", "filename"=>"IMG_1242-2"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 421)
+
+
+Started GET "/posts/2" for ::1 at 2020-07-20 23:52:59 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.3ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 7], ["updated_at", "2020-07-21 03:52:59.875861"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (13.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActionText::RichText Load (0.1ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 1.0ms | Allocations: 495)
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.5ms | Allocations: 418)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 8.9ms | Allocations: 7566)
+  Rendered posts/show.html.erb within layouts/application (Duration: 12.6ms | Allocations: 9296)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 16.0ms | ActiveRecord: 14.1ms | Allocations: 16760)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU0OjU5LjY5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2c59e997dd903086688f7aff83c7b105aae3ff39/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg" for ::1 at 2020-07-20 23:52:59 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"IMG_1242-2.jpg\"; filename*=UTF-8''IMG_1242-2.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU0OjU5LjY5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2c59e997dd903086688f7aff83c7b105aae3ff39", "filename"=>"IMG_1242-2"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 419)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2020-07-20 23:54:18 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.6ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 8], ["updated_at", "2020-07-21 03:54:18.361193"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActionText::RichText Load (0.1ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 3.1ms | Allocations: 3020)
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:13
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 1.2ms | Allocations: 551)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 59.9ms | Allocations: 20002)
+  Rendered posts/show.html.erb within layouts/application (Duration: 108.8ms | Allocations: 32147)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 165ms (Views: 121.3ms | ActiveRecord: 8.9ms | Allocations: 49019)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU0OjU5LjY5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2c59e997dd903086688f7aff83c7b105aae3ff39/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg" for 127.0.0.1 at 2020-07-20 23:54:18 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"IMG_1242-2.jpg\"; filename*=UTF-8''IMG_1242-2.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU0OjU5LjY5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2c59e997dd903086688f7aff83c7b105aae3ff39", "filename"=>"IMG_1242-2"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 537)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--36dba548529696199ce98210dd6b2d609150a95e/Intro.mp4" for 127.0.0.1 at 2020-07-20 23:54:18 -0400
+Processing by ActiveStorage::BlobsController#show as MP4
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--36dba548529696199ce98210dd6b2d609150a95e", "filename"=>"Intro"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: k6p9t41zsn53ncxmlgoa4c06wpb8 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 2162)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for 127.0.0.1 at 2020-07-20 23:54:18 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 449)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for 127.0.0.1 at 2020-07-20 23:54:20 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 451)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for 127.0.0.1 at 2020-07-20 23:54:20 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 449)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:54:20 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 461)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:54:20 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 453)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:54:20 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 457)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:54:20 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 455)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:54:31 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 455)
+
+
+Started GET "/posts/2" for ::1 at 2020-07-20 23:57:35 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "views" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["views", 9], ["updated_at", "2020-07-21 03:57:35.753668"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  [1m[35m (13.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActionText::RichText Load (0.2ms)[0m  [1m[34mSELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 1.1ms | Allocations: 804)
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered active_storage/blobs/_blob.html.erb (Duration: 0.6ms | Allocations: 443)
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/actiontext-6.0.3.2/app/views/action_text/content/_layout.html.erb (Duration: 9.5ms | Allocations: 8266)
+  Rendered posts/show.html.erb within layouts/application (Duration: 14.2ms | Allocations: 10655)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 18.1ms | ActiveRecord: 14.1ms | Allocations: 19088)
+
+
+Started GET "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9VY21WemFYcGxYM1J2WDJ4cGJXbDBXd2RwQWdBRWFRSUFBdz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--42f2331a821d797606bb2d6257819931318bd4ef/IMG_1242-2.jpg" for ::1 at 2020-07-20 23:57:35 -0400
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:57:35 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Processing by ActiveStorage::RepresentationsController#show as JPEG
+Completed 206 Partial Content in 3ms (ActiveRecord: 0.0ms | Allocations: 2322)
+
+
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b64375891ceb2d21d3dfd46931d25618ccca48b", "variation_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9VY21WemFYcGxYM1J2WDJ4cGJXbDBXd2RwQWdBRWFRSUFBdz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--42f2331a821d797606bb2d6257819931318bd4ef", "filename"=>"IMG_1242-2"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (0.1ms) [0m[34mChecked if file exists at key: variants/vnr81rj73jigwfhz7t1qydu3b1ro/ede3ec2b1ca41e19e03906cdfb701ea9fabc72a1e28af0adb2efefdb2bdbd5d9 (yes)[0m
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: variants/vnr81rj73jigwfhz7t1qydu3b1ro/ede3ec2b1ca41e19e03906cdfb701ea9fabc72a1e28af0adb2efefdb2bdbd5d9 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDA0OjAyOjM1Ljg0NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d30ccc70d048e80a8efac4e180f2f7ab0b33d469/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDA0OjAyOjM1Ljg0NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d30ccc70d048e80a8efac4e180f2f7ab0b33d469/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 2166)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDA0OjAyOjM1Ljg0NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d30ccc70d048e80a8efac4e180f2f7ab0b33d469/IMG_1242-2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22IMG_1242-2.jpg%22%3B+filename%2A%3DUTF-8%27%27IMG_1242-2.jpg" for ::1 at 2020-07-20 23:57:35 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"IMG_1242-2.jpg\"; filename*=UTF-8''IMG_1242-2.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSnJkbUZ5YVdGdWRITXZkbTV5T0RGeWFqY3phbWxuZDJab2VqZDBNWEY1WkhVellqRnlieTlsWkdVelpXTXlZakZqWVRReFpURTVaVEF6T1RBMlkyUm1ZamN3TVdWaE9XWmhZbU0zTW1FeFpUSTRZV1l3WVdSaU1tVm1aV1prWWpKaVpHSmtOV1E1QmpvR1JWUTZFR1JwYzNCdmMybDBhVzl1U1NKSGFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaVNVMUhYekV5TkRJdE1pNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBsTlIxOHhNalF5TFRJdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDA0OjAyOjM1Ljg0NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d30ccc70d048e80a8efac4e180f2f7ab0b33d469", "filename"=>"IMG_1242-2"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 452)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:57:39 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 450)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:57:39 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 457)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:57:39 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 453)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:57:39 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 459)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:57:39 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 447)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:57:39 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 447)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e/Intro.mp4?content_type=video%2Fmp4&disposition=attachment%3B+filename%3D%22Intro.mp4%22%3B+filename%2A%3DUTF-8%27%27Intro.mp4" for ::1 at 2020-07-20 23:57:45 -0400
+Processing by ActiveStorage::DiskController#show as MP4
+  Parameters: {"content_type"=>"video/mp4", "disposition"=>"attachment; filename=\"Intro.mp4\"; filename*=UTF-8''Intro.mp4", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhelp3T1hRME1YcHpialV6Ym1ONGJXeG5iMkUwWXpBMmQzQmlPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSkpiblJ5Ynk1dGNEUWlPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMGx1ZEhKdkxtMXdOQVk3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRG5acFpHVnZMMjF3TkFZN0JsUT0iLCJleHAiOiIyMDIwLTA3LTIxVDAzOjU5OjE4LjU2MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--add30e1b8338807f47ba6a123c416e8948f6e85e", "filename"=>"Intro"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 463)
+
+
