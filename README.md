@@ -32,10 +32,12 @@ Hello and welcome to the repository for my 20 in 20 challenge. This repo will co
 # Half Way Hiatus
 
 • Week 11 - Uploading Videos to Action Text
+            
             - Video Tutorial https://youtu.be/hE-mxN2GXVo
             - Blog Tutorial https://deanin.com/blog/action-text-videos/
 
 • Week 12 - GraphQL in Rails 6 
+            
             - Video Tutorial https://youtu.be/R6KR942yiYE
             - Blog Tutorial https://deanin.com/blog/graphql
 
