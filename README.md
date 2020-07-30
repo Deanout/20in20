@@ -21,6 +21,7 @@ Hello and welcome to the repository for my 20 in 20 challenge. This repo will co
 • Week 7 - The Tic Tac Toe With Leaderboard Game: https://www.youtube.com/watch?v=Aye0E8uMDLo
 
 • Week 8 - The Devise And Bootstrap Rails Template
+            
             - Video Tutorial https://youtu.be/JR8u5gfmDxU
             - Blog Tutorial https://deandehart.com/blog/rails-template-for-devvise-and-bootstrap
 
@@ -30,9 +31,13 @@ Hello and welcome to the repository for my 20 in 20 challenge. This repo will co
 
 # Half Way Hiatus
 
-• Week 11 - 
+• Week 11 - Uploading Videos to Action Text
+            - Video Tutorial https://youtu.be/hE-mxN2GXVo
+            - Blog Tutorial https://deanin.com/blog/action-text-videos/
 
-• Week 12 - 
+• Week 12 - GraphQL in Rails 6 
+            - Video Tutorial https://youtu.be/R6KR942yiYE
+            - Blog Tutorial https://deanin.com/blog/graphql
 
 • Week 13 - 
 
