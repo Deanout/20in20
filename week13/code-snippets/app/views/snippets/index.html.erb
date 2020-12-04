@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Snippets</h1>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+    <th scoppe="col">#</th>
+    <th scoppe="col">Name</th>
+    <th scoppe="col">Snippet</th>
+    <th scoppe="col">Tags</th>
+    <th scoppe="col" colspan="3">Manage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @snippets.each do |snippet| %>
+      <tr>
+        <th scope="row"><%= snippet.id %></th>
+        <td><%= link_to snippet.title, snippet %></td>
+        <td><%= snippet.body %></td>
+        <td>
+          <% snippet.tags.each do |tag| %>
+            <%= link_to tag.name, snippets_path(tag: tag.name) %>
+          <% end %>
+        </td>
+        <td><%= link_to "Show", snippet %></td>
+        <td><%= link_to "Edit", edit_snippet_path(snippet) %></td>
+        <td><%= link_to "Delete", snippet, method: :delete, data: { confirm: "Are you sure?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Snippet', new_snippet_path %>

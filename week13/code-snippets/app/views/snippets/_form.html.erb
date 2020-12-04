@@ -1,0 +1,36 @@
+<%= form_with(model: snippet, local: true) do |form| %>
+  <% if snippet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
+
+      <ul>
+        <% snippet.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body, class:'form-control'  %>
+  </div>
+
+  <div class="large-10 large-centered-columns">
+    <%= form.text_field :all_tags, placeholder: "Enter tags, separated by commas...", class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :language %>
+    <%= collection_select(:snippet, :language_id, @languages, :id, :name, { class:'form-control' }) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

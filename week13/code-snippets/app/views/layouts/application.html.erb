@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CodeSnippets</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.0/styles/default.min.css">
+</head>
+  <body>
+    <header>
+      <%= render 'layouts/navbar' %>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+    </footer>
+  </body>
+</html>
