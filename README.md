@@ -44,7 +44,11 @@ Hello and welcome to the repository for my 20 in 20 challenge. This repo will co
 
 [Blog Tutorial](https://deanin.com/blog/graphql)
 
-• Week 13 - 
+• Week 13 - Fast Code Snippets And Syntax Highlighting With Highlight.JS
+            
+[Video Tutorial](https://youtu.be/vQioItq2HXo)
+
+[Blog Tutorial](https://deanin.com/blog/code-snippets)
 
 • Week 14 - 
 
