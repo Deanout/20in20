@@ -50,9 +50,17 @@ Hello and welcome to the repository for my 20 in 20 challenge. This repo will co
 
 [Blog Tutorial](https://deanin.com/blog/code-snippets)
 
-• Week 14 - 
+• Week 14 - Iterate Fast – How You Can Have Fewer Bugs By Using Rspec TDD In Ruby On Rails 6
 
-• Week 15 - 
+[Video Tutorial](https://www.youtube.com/watch?v=AAqPc0j_2bg)
+
+[Blog Tutorial](https://deanin.com/blog/rspec-rails/)
+
+• Week 15 - Vue 3 And Vuex Frontend With Ruby On Rails 6 REST API Backend Using Axios Calls
+
+[Video Tutorial](https://www.youtube.com/watch?v=gnymlh4Ljvw)
+
+Blog Tutorial Coming Soon™
 
 • Week 16 - 
 
