@@ -1,0 +1,2 @@
+class Todone < ApplicationRecord
+end
