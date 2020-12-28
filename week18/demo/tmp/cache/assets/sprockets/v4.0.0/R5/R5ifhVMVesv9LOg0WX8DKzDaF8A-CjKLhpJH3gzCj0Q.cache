@@ -1,0 +1,25 @@
+{:uriI"Þfile:///home/dean/.rvm/gems/ruby-2.7.1/gems/stimulus-rails-0.1.1/app/assets/javascripts/stimulus/loaders/preloader.js.erb?type=application/javascript+ruby&id=1b8658c2f483c9566ee123eca1913434bd6e5808e17ad6ca71bfc2a92d3e0d5f:ET:load_pathI"U/home/dean/.rvm/gems/ruby-2.7.1/gems/stimulus-rails-0.1.1/app/assets/javascripts;T:filenameI"w/home/dean/.rvm/gems/ruby-2.7.1/gems/stimulus-rails-0.1.1/app/assets/javascripts/stimulus/loaders/preloader.js.erb;T:	nameI"stimulus/loaders/preloader;T:logical_pathI"&stimulus/loaders/preloader.js.erb;T:content_typeI" application/javascript+ruby;T:sourceI"q// Experimental: Not currently exposed.
+import { Application } from "stimulus"
+
+const application = Application.start()
+
+async function preloadControllers() {
+  const imports = await fetch("<%= asset_path "importmap.json" %>").then(r => r.json()).then(json => json.imports)
+
+  for (const name in imports) {
+    if (name.startsWith("controllers/")) {
+      let controllerName = name.replace(/controllers\//, "").replace("_controller", "")
+
+      import(imports[name]).then((module) => {
+        application.register(controllerName, module.default)
+      }).catch(error => console.log(error))
+    }
+  }
+}
+
+preloadControllers()
+;T:metadata{
+:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Vprocessors:type=application/javascript+ruby&file_type=application/javascript+ruby;TTI"€file-digest:///home/dean/.rvm/gems/ruby-2.7.1/gems/stimulus-rails-0.1.1/app/assets/javascripts/stimulus/loaders/preloader.js.erb;TTF:charsetI"
+utf-8;F:digest"%kÏS×¬1DZä|½rDÆ‡2œI	Ouâ™%™ŽÌ7´:lengthiq:environment_versionI"1.0;T:dependencies_digest"%»Å°»?3)Á±¯”5«`Èô†]âMä©·d	:idI"E1b8658c2f483c9566ee123eca1913434bd6e5808e17ad6ca71bfc2a92d3e0d5f;F
