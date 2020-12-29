@@ -1,0 +1,2 @@
+module CompletedHelper
+end

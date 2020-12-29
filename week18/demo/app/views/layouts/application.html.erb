@@ -11,7 +11,8 @@
     <%= yield :head %>
     <%= turbo_include_tags %>
     <%= stimulus_include_tags %>
-  </head>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
 
   <body>
     <%= yield %>

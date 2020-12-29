@@ -4,7 +4,8 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
+    @todos = Todo.all.reverse
+    @todo = Todo.new
   end
 
   # GET /todos/1
@@ -31,6 +32,7 @@ class TodosController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@todo, partial: 'todos/form', locals: { todo: @todo }) }
       end
     end
   end
