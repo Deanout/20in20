@@ -1,0 +1,10 @@
+{:uriI"èfile://app/assets/javascripts/importmap.json.erb?type=application/json+ruby&id=3f2713420ebd63bd97f04a12f90d4cf39e6cba2ef48be89254918a49a95f66f3:ET:load_pathI"app/assets/javascripts;T:filenameI".app/assets/javascripts/importmap.json.erb;T:	nameI"importmap;T:logical_pathI"importmap.json.erb;T:content_typeI"application/json+ruby;T:sourceI"é{
+  "imports": { 
+    <%= importmap_list_with_stimulus_from "app/assets/javascripts/controllers", "app/assets/javascripts/libraries" %>
+  }
+}
+;T:metadata{
+:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Jprocessors:type=application/json+ruby&file_type=application/json+ruby;TTI"<file-digest://app/assets/javascripts/importmap.json.erb;TTF:charsetI"
+utf-8;F:digest"%jEêÔZc§aS;éwÑ™D8#–,ûßOöäÇ∏è’:lengthié:environment_versionI"1.0;T:dependencies_digest"%bô,‡~ön7π.˛Û∫Û	ÖF:¡_Ïç]Ár§HKŒf{æ:idI"E3f2713420ebd63bd97f04a12f90d4cf39e6cba2ef48be89254918a49a95f66f3;F

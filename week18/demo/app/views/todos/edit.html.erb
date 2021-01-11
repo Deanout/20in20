@@ -1,6 +1,13 @@
 <h1>Editing Todo</h1>
 
-<%= render 'form', todo: @todo %>
+<%= turbo_frame_tag dom_id(@todo) do %>
+<div class="card">
+    <div class="card-body <%= @todo.completed ? 'completed' : 'not-completed' %>">
+    <%= render 'form', todo: @todo %>
+    <%= link_to "Cancel", @todo %>
+    </div>
+</div>
+<% end %>
 
 <%= link_to 'Show', @todo %> |
 <%= link_to 'Back', todos_path %>

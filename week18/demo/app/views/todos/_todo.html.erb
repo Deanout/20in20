@@ -1,13 +1,12 @@
 <%= turbo_frame_tag dom_id(todo) do %>
 <div class="card">
     <div class="card-body <%= todo.completed ? 'completed' : 'not-completed' %>">
-    <%= todo.title %><br/>
-    <div class="btn-group float-right">
-    <%= link_to 'Complete', update_completed_path(id: todo.id, todo: todo), class:'btn btn-secondary' %>
-    <%= link_to 'Show', todo, class:'btn btn-primary' %><br />
-    <%= link_to 'Edit', edit_todo_path(todo), class:'btn btn-warning' %><br />
-    <%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %><br />
-    </div>
+        <%= todo.title %><br/>
+        <div class="btn-group float-right">
+            <%= link_to 'Complete', update_completed_path(id: todo.id, todo: todo), class:'btn btn-secondary' %>
+            <%= link_to 'Edit', edit_todo_path(todo), class:'btn btn-warning' %><br />
+            <%= button_to 'Destroy', todo, method: :delete, class:'btn btn-danger' %><br />
+        </div>
     </div>
 </div>
 <% end %>

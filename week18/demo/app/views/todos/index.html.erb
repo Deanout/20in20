@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Todos</h1>
+<%= turbo_stream_from "todos" %>
+
 <%= turbo_frame_tag "todo_form" do %>
 <%= render 'form', todo: @todo %>
 <% end %>
 
 
-  <%= turbo_stream_from "todos" %>
-  <%= turbo_frame_tag "todos" do %>
-    <%= render @todos %>
-  <% end %>
+<%= turbo_frame_tag "todos" do %>
+  <%= render @todos %>
+<% end %>
 
 <br>
 
