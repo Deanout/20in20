@@ -62,6 +62,8 @@ Hello and welcome to the repository for my 20 in 20 challenge. This repo will co
 
 Blog Tutorial Coming Soon™
 
+These videos will be updated in the coming weekend.
+
 • Week 16 - 
 
 • Week 17 - 
