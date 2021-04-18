@@ -1,0 +1,1609 @@
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (12.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTodos (20201211052027)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "completed" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201211052027"]]
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-12-11 05:20:37.119505"], ["updated_at", "2020-12-11 05:20:37.119505"]]
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-12-11 00:24:56 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/dean/.rvm/gems/ruby-2.7.1/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/dean/.rvm/gems/ruby-2.7.1/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.9ms | Allocations: 407)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.0ms | Allocations: 2240)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 00:25:04 -0500
+  
+NameError (uninitialized constant API
+Did you mean?  Api):
+  
+app/controllers/api/v1/todos_controller.rb:1:in `<main>'
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 00:25:37 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1614)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Hello, World!"], ["completed", 0], ["created_at", "2020-12-11 05:26:26.181901"], ["updated_at", "2020-12-11 05:26:26.181901"]]
+  [1m[35m (7.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 00:26:30 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 3505)
+
+
+Started GET "/api/v1" for ::1 at 2020-12-11 01:07:06 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:07:44 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 796)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:07:51 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+Completed 400 Bad Request in 6ms (ActiveRecord: 0.2ms | Allocations: 2339)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: todo):
+  
+app/controllers/api/v1/todos_controller.rb:56:in `todo_params'
+app/controllers/api/v1/todos_controller.rb:35:in `update'
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:08:28 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 762)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:08:31 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 763)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:08:33 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1", "title"=>"Hello, World!", "completed"=>true, "todo"=>{"id"=>"1", "title"=>"Hello, World!", "completed"=>true}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 1], ["updated_at", "2020-12-11 06:08:33.501578"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 6.4ms | Allocations: 5269)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:08:38 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 763)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:08:40 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1", "title"=>"Hello, World!", "completed"=>false, "todo"=>{"id"=>"1", "title"=>"Hello, World!", "completed"=>false}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 0], ["updated_at", "2020-12-11 06:08:40.343868"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 7.2ms | Allocations: 5124)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:08:41 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1", "title"=>"Hello, World!", "completed"=>true, "todo"=>{"id"=>"1", "title"=>"Hello, World!", "completed"=>true}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 1], ["updated_at", "2020-12-11 06:08:41.602828"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 7.5ms | Allocations: 4477)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:08:42 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1", "title"=>"Hello, World!", "completed"=>false, "todo"=>{"id"=>"1", "title"=>"Hello, World!", "completed"=>false}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 0], ["updated_at", "2020-12-11 06:08:43.001132"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 6.8ms | Allocations: 4493)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:08:44 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1", "title"=>"Hello, World!", "completed"=>true, "todo"=>{"id"=>"1", "title"=>"Hello, World!", "completed"=>true}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 1], ["updated_at", "2020-12-11 06:08:44.478584"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 13ms (Views: 0.5ms | ActiveRecord: 7.0ms | Allocations: 5103)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:10:28 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1", "title"=>"Hello, World!", "completed"=>false, "todo"=>{"id"=>"1", "title"=>"Hello, World!", "completed"=>false}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 0], ["updated_at", "2020-12-11 06:10:28.390882"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (7.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 8.0ms | Allocations: 5103)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:11:02 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1", "title"=>"Hello, World!", "completed"=>true, "todo"=>{"id"=>"1", "title"=>"Hello, World!", "completed"=>true}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 1], ["updated_at", "2020-12-11 06:11:02.563466"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 7.5ms | Allocations: 5103)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:11:04 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1", "title"=>"Hello, World!", "completed"=>false, "todo"=>{"id"=>"1", "title"=>"Hello, World!", "completed"=>false}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 0], ["updated_at", "2020-12-11 06:11:04.199107"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (13.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 14.2ms | Allocations: 5087)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:12:55 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 764)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:12:56 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1", "title"=>"Hello, World!", "completed"=>true, "todo"=>{"id"=>"1", "title"=>"Hello, World!", "completed"=>true}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 1], ["updated_at", "2020-12-11 06:12:56.392525"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (8.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 8.7ms | Allocations: 4484)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:12:57 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1", "title"=>"Hello, World!", "completed"=>false, "todo"=>{"id"=>"1", "title"=>"Hello, World!", "completed"=>false}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.3ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 0], ["updated_at", "2020-12-11 06:12:57.372226"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (14.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 14.5ms | Allocations: 5103)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:13:03 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1", "title"=>"Hello, World!", "completed"=>true, "todo"=>{"id"=>"1", "title"=>"Hello, World!", "completed"=>true}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 1], ["updated_at", "2020-12-11 06:13:03.871165"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 5103)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:13:30 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 763)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:14:07 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 763)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:14:34 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 763)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:15:19 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 763)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:15:19 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 763)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:17:05 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 763)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:17:08 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 763)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:22:03 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 764)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:22:27 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 763)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:22:32 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 763)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:22:40 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"Hello again, world.", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Hello again, world."], ["completed", 0], ["created_at", "2020-12-11 06:22:40.186120"], ["updated_at", "2020-12-11 06:22:40.186120"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 6.8ms | Allocations: 34642)
+
+
+  
+NoMethodError (undefined method `todo_url' for #<Api::V1::TodosController:0x00007f50d4230e20>):
+  
+app/controllers/api/v1/todos_controller.rb:27:in `create'
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:24:03 -0500
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 4184)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:24:12 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"Another one", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Another one"], ["completed", 0], ["created_at", "2020-12-11 06:24:12.034176"], ["updated_at", "2020-12-11 06:24:12.034176"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.4ms | ActiveRecord: 6.5ms | Allocations: 4544)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:25:13 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 1005)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:26:33 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 1005)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:26:36 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:26:36.493342"], ["updated_at", "2020-12-11 06:26:36.493342"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (15.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 23ms (Views: 0.7ms | ActiveRecord: 15.3ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:26:37 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"2", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "2"], ["completed", 0], ["created_at", "2020-12-11 06:26:37.220516"], ["updated_at", "2020-12-11 06:26:37.220516"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.4ms | Allocations: 4522)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:26:37 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:26:37.751746"], ["updated_at", "2020-12-11 06:26:37.751746"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 8.2ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:26:38 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"4", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "4"], ["completed", 0], ["created_at", "2020-12-11 06:26:38.333377"], ["updated_at", "2020-12-11 06:26:38.333377"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (14.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 20ms (Views: 0.2ms | ActiveRecord: 14.5ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:26:38 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"5", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "5"], ["completed", 0], ["created_at", "2020-12-11 06:26:38.917975"], ["updated_at", "2020-12-11 06:26:38.917975"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 8.3ms | Allocations: 4518)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:29:31 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 1611)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:30:08 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 1611)
+
+
+Started GET "/api/v1/todos?_limit=5" for ::1 at 2020-12-11 01:30:10 -0500
+Processing by Api::V1::TodosController#index as HTML
+  Parameters: {"_limit"=>"5"}
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."id" DESC LIMIT ?[0m  [["LIMIT", 5]]
+  ↳ app/controllers/api/v1/todos_controller.rb:11:in `index'
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/todos?_limit=25" for ::1 at 2020-12-11 01:30:16 -0500
+Processing by Api::V1::TodosController#index as HTML
+  Parameters: {"_limit"=>"25"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."id" DESC LIMIT ?[0m  [["LIMIT", 25]]
+  ↳ app/controllers/api/v1/todos_controller.rb:11:in `index'
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 1673)
+
+
+Started PUT "/api/v1/todos/8" for ::1 at 2020-12-11 01:30:27 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"8", "title"=>"5", "completed"=>true, "todo"=>{"id"=>"8", "title"=>"5", "completed"=>true}}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.4ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 1], ["updated_at", "2020-12-11 06:30:27.655968"], ["id", 8]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 14ms (Views: 0.4ms | ActiveRecord: 7.1ms | Allocations: 5224)
+
+
+Started PUT "/api/v1/todos/8" for ::1 at 2020-12-11 01:30:28 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"8", "title"=>"5", "completed"=>false, "todo"=>{"id"=>"8", "title"=>"5", "completed"=>false}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 0], ["updated_at", "2020-12-11 06:30:28.279468"], ["id", 8]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 6.8ms | Allocations: 4484)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-12-11 01:31:32 -0500
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in `index'
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 1611)
+
+
+Started DELETE "/api/v1/todos/8" for ::1 at 2020-12-11 01:32:25 -0500
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[36mTodo Destroy (0.2ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[35m (9.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+Completed 204 No Content in 16ms (ActiveRecord: 9.4ms | Allocations: 4436)
+
+
+Started DELETE "/api/v1/todos/7" for ::1 at 2020-12-11 01:32:26 -0500
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[36mTodo Destroy (0.2ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+Completed 204 No Content in 13ms (ActiveRecord: 8.2ms | Allocations: 4417)
+
+
+Started DELETE "/api/v1/todos/6" for ::1 at 2020-12-11 01:32:26 -0500
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[36mTodo Destroy (0.3ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 6]]
+Started PUT "/api/v1/todos/6" for ::1 at 2020-12-11 01:32:26 -0500
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[35m (8.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Completed 204 No Content in 18ms (ActiveRecord: 9.3ms | Allocations: 4938)
+
+
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"6", "title"=>"3", "completed"=>true, "todo"=>{"id"=>"6", "title"=>"3", "completed"=>true}}
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 620)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Todo with 'id'=6):
+  
+app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+Started DELETE "/api/v1/todos/5" for ::1 at 2020-12-11 01:32:26 -0500
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[36mTodo Destroy (0.2ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+Completed 204 No Content in 14ms (ActiveRecord: 8.4ms | Allocations: 4417)
+
+
+Started DELETE "/api/v1/todos/4" for ::1 at 2020-12-11 01:32:27 -0500
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[36mTodo Destroy (0.2ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[35m (14.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+Completed 204 No Content in 19ms (ActiveRecord: 14.5ms | Allocations: 4417)
+
+
+Started DELETE "/api/v1/todos/3" for ::1 at 2020-12-11 01:32:27 -0500
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[36mTodo Destroy (0.2ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[35m (13.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+Completed 204 No Content in 19ms (ActiveRecord: 14.2ms | Allocations: 4418)
+
+
+Started DELETE "/api/v1/todos/2" for ::1 at 2020-12-11 01:32:30 -0500
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[36mTodo Destroy (0.2ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `destroy'
+Completed 204 No Content in 12ms (ActiveRecord: 6.9ms | Allocations: 4417)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2020-12-11 01:32:31 -0500
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"id"=>"1", "title"=>"Hello, World!", "completed"=>false, "todo"=>{"id"=>"1", "title"=>"Hello, World!", "completed"=>false}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:51:in `set_todo'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["completed", 0], ["updated_at", "2020-12-11 06:32:31.479974"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `update'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 5086)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:34 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"another one", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "another one"], ["completed", 0], ["created_at", "2020-12-11 06:32:34.652460"], ["updated_at", "2020-12-11 06:32:34.652460"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 7.3ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:36 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:36.542077"], ["updated_at", "2020-12-11 06:32:36.542077"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.5ms | Allocations: 4484)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:36 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", ""], ["completed", 0], ["created_at", "2020-12-11 06:32:36.804317"], ["updated_at", "2020-12-11 06:32:36.804317"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.9ms | ActiveRecord: 7.2ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:37 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", ""], ["completed", 0], ["created_at", "2020-12-11 06:32:37.442512"], ["updated_at", "2020-12-11 06:32:37.442512"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 8.4ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:37 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:37.850974"], ["updated_at", "2020-12-11 06:32:37.850974"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.4ms | ActiveRecord: 8.1ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:38 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:38.091761"], ["updated_at", "2020-12-11 06:32:38.091761"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 8.0ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:38 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:38.272425"], ["updated_at", "2020-12-11 06:32:38.272425"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (9.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 20ms (Views: 0.3ms | ActiveRecord: 9.7ms | Allocations: 4519)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:38 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:38.464584"], ["updated_at", "2020-12-11 06:32:38.464584"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 7.5ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:38 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:38.630806"], ["updated_at", "2020-12-11 06:32:38.630806"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.2ms | ActiveRecord: 6.8ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:38 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:38.809884"], ["updated_at", "2020-12-11 06:32:38.809884"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.5ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:38 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:38.998268"], ["updated_at", "2020-12-11 06:32:38.998268"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 9.8ms | Allocations: 4484)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:39 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", ""], ["completed", 0], ["created_at", "2020-12-11 06:32:39.188882"], ["updated_at", "2020-12-11 06:32:39.188882"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 6.8ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:39 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:39.473671"], ["updated_at", "2020-12-11 06:32:39.473671"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 7.4ms | Allocations: 4519)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:39 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:39.698265"], ["updated_at", "2020-12-11 06:32:39.698265"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.2ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:39 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.4ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:39.937727"], ["updated_at", "2020-12-11 06:32:39.937727"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 7.7ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:40 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:40.132455"], ["updated_at", "2020-12-11 06:32:40.132455"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:40 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:40.329561"], ["updated_at", "2020-12-11 06:32:40.329561"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.2ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:40 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:40.541289"], ["updated_at", "2020-12-11 06:32:40.541289"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.4ms | Allocations: 4484)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:40 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:40.739239"], ["updated_at", "2020-12-11 06:32:40.739239"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.2ms | ActiveRecord: 7.1ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:40 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:40.928485"], ["updated_at", "2020-12-11 06:32:40.928485"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.2ms | ActiveRecord: 7.2ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:41 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:41.116287"], ["updated_at", "2020-12-11 06:32:41.116287"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.3ms | ActiveRecord: 7.0ms | Allocations: 3907)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:41 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", ""], ["completed", 0], ["created_at", "2020-12-11 06:32:41.293815"], ["updated_at", "2020-12-11 06:32:41.293815"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.7ms | Allocations: 3905)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:41 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:41.478111"], ["updated_at", "2020-12-11 06:32:41.478111"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.2ms | Allocations: 4484)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:41 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:41.662344"], ["updated_at", "2020-12-11 06:32:41.662344"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.2ms | ActiveRecord: 6.8ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:41 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:41.877411"], ["updated_at", "2020-12-11 06:32:41.877411"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (9.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.2ms | ActiveRecord: 9.7ms | Allocations: 4519)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:42 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:42.075810"], ["updated_at", "2020-12-11 06:32:42.075810"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.2ms | ActiveRecord: 7.1ms | Allocations: 3905)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:42 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:42.278443"], ["updated_at", "2020-12-11 06:32:42.278443"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.3ms | ActiveRecord: 6.8ms | Allocations: 4484)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:42 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"123", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "123"], ["completed", 0], ["created_at", "2020-12-11 06:32:42.498261"], ["updated_at", "2020-12-11 06:32:42.498261"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 8.2ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:42 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:42.709216"], ["updated_at", "2020-12-11 06:32:42.709216"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.7ms | ActiveRecord: 7.8ms | Allocations: 3921)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:42 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"23", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "23"], ["completed", 0], ["created_at", "2020-12-11 06:32:42.931898"], ["updated_at", "2020-12-11 06:32:42.931898"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 8.4ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:43 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"123", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "123"], ["completed", 0], ["created_at", "2020-12-11 06:32:43.148366"], ["updated_at", "2020-12-11 06:32:43.148366"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 16ms (Views: 0.3ms | ActiveRecord: 8.8ms | Allocations: 4522)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:43 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:43.351165"], ["updated_at", "2020-12-11 06:32:43.351165"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:43 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"23", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "23"], ["completed", 0], ["created_at", "2020-12-11 06:32:43.543229"], ["updated_at", "2020-12-11 06:32:43.543229"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.0ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:43 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:43.723344"], ["updated_at", "2020-12-11 06:32:43.723344"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.4ms | ActiveRecord: 7.5ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:43 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:43.914025"], ["updated_at", "2020-12-11 06:32:43.914025"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.2ms | ActiveRecord: 7.5ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:44 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:44.117633"], ["updated_at", "2020-12-11 06:32:44.117633"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.3ms | ActiveRecord: 6.9ms | Allocations: 4484)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:44 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"31", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "31"], ["completed", 0], ["created_at", "2020-12-11 06:32:44.366412"], ["updated_at", "2020-12-11 06:32:44.366412"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (8.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 8.4ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:44 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"23", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "23"], ["completed", 0], ["created_at", "2020-12-11 06:32:44.557110"], ["updated_at", "2020-12-11 06:32:44.557110"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (10.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 16ms (Views: 0.3ms | ActiveRecord: 10.4ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:44 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:44.746940"], ["updated_at", "2020-12-11 06:32:44.746940"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (8.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 9.2ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:44 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:44.940034"], ["updated_at", "2020-12-11 06:32:44.940034"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.0ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:45 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:45.126292"], ["updated_at", "2020-12-11 06:32:45.126292"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.2ms | Allocations: 3904)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:45 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:45.303407"], ["updated_at", "2020-12-11 06:32:45.303407"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 7.3ms | Allocations: 4519)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:45 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:45.469765"], ["updated_at", "2020-12-11 06:32:45.469765"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.0ms | Allocations: 4519)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:45 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"23", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "23"], ["completed", 0], ["created_at", "2020-12-11 06:32:45.644890"], ["updated_at", "2020-12-11 06:32:45.644890"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:45 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:45.813054"], ["updated_at", "2020-12-11 06:32:45.813054"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.3ms | ActiveRecord: 6.9ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:45 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:45.995596"], ["updated_at", "2020-12-11 06:32:45.995596"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.2ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:46 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:46.168165"], ["updated_at", "2020-12-11 06:32:46.168165"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.2ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:46 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:46.363588"], ["updated_at", "2020-12-11 06:32:46.363588"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.5ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:46 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:46.578320"], ["updated_at", "2020-12-11 06:32:46.578320"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (8.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 8.3ms | Allocations: 4519)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:46 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:46.766058"], ["updated_at", "2020-12-11 06:32:46.766058"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.2ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:46 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:46.930207"], ["updated_at", "2020-12-11 06:32:46.930207"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 4484)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:47 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:47.125069"], ["updated_at", "2020-12-11 06:32:47.125069"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.7ms | ActiveRecord: 7.1ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:47 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"123", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "123"], ["completed", 0], ["created_at", "2020-12-11 06:32:47.319119"], ["updated_at", "2020-12-11 06:32:47.319119"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.4ms | ActiveRecord: 6.8ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:47 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:47.487650"], ["updated_at", "2020-12-11 06:32:47.487650"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:47 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"23", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "23"], ["completed", 0], ["created_at", "2020-12-11 06:32:47.666281"], ["updated_at", "2020-12-11 06:32:47.666281"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (9.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.2ms | ActiveRecord: 9.5ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:47 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:47.830440"], ["updated_at", "2020-12-11 06:32:47.830440"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 6.9ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:48 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:48.004057"], ["updated_at", "2020-12-11 06:32:48.004057"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.3ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:48 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:48.196574"], ["updated_at", "2020-12-11 06:32:48.196574"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (9.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.2ms | ActiveRecord: 9.5ms | Allocations: 4484)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:48 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:48.381384"], ["updated_at", "2020-12-11 06:32:48.381384"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 6.7ms | Allocations: 4519)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:48 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:48.564933"], ["updated_at", "2020-12-11 06:32:48.564933"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.3ms | Allocations: 4519)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:48 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:48.727889"], ["updated_at", "2020-12-11 06:32:48.727889"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 8.2ms | Allocations: 4485)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:48 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:48.892328"], ["updated_at", "2020-12-11 06:32:48.892328"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.2ms | ActiveRecord: 7.0ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:49 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"23", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "23"], ["completed", 0], ["created_at", "2020-12-11 06:32:49.077919"], ["updated_at", "2020-12-11 06:32:49.077919"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.3ms | ActiveRecord: 6.9ms | Allocations: 3905)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:49 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:49.251810"], ["updated_at", "2020-12-11 06:32:49.251810"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.4ms | ActiveRecord: 8.4ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:49 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"23", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "23"], ["completed", 0], ["created_at", "2020-12-11 06:32:49.426962"], ["updated_at", "2020-12-11 06:32:49.426962"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 16ms (Views: 0.2ms | ActiveRecord: 9.8ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:49 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.4ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:49.613338"], ["updated_at", "2020-12-11 06:32:49.613338"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.2ms | ActiveRecord: 7.1ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:49 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"23", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "23"], ["completed", 0], ["created_at", "2020-12-11 06:32:49.797241"], ["updated_at", "2020-12-11 06:32:49.797241"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (9.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 9.7ms | Allocations: 4519)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:49 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:49.972396"], ["updated_at", "2020-12-11 06:32:49.972396"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.3ms | ActiveRecord: 6.9ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:50 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:50.155586"], ["updated_at", "2020-12-11 06:32:50.155586"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.4ms | ActiveRecord: 7.0ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:50 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"12", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.4ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "12"], ["completed", 0], ["created_at", "2020-12-11 06:32:50.319536"], ["updated_at", "2020-12-11 06:32:50.319536"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 7.2ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:50 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"3", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "3"], ["completed", 0], ["created_at", "2020-12-11 06:32:50.477101"], ["updated_at", "2020-12-11 06:32:50.477101"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (9.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 9.9ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:50 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"123", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "123"], ["completed", 0], ["created_at", "2020-12-11 06:32:50.641189"], ["updated_at", "2020-12-11 06:32:50.641189"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 12ms (Views: 0.3ms | ActiveRecord: 7.3ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:50 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", ""], ["completed", 0], ["created_at", "2020-12-11 06:32:50.821760"], ["updated_at", "2020-12-11 06:32:50.821760"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.4ms | ActiveRecord: 7.3ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:51 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"123", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "123"], ["completed", 0], ["created_at", "2020-12-11 06:32:51.005736"], ["updated_at", "2020-12-11 06:32:51.005736"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.2ms | Allocations: 4518)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:32:51 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"1", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "1"], ["completed", 0], ["created_at", "2020-12-11 06:32:51.873982"], ["updated_at", "2020-12-11 06:32:51.873982"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 4518)
+
+
+Started GET "/api/v1/todos?_limit=5" for ::1 at 2020-12-11 01:32:53 -0500
+Processing by Api::V1::TodosController#index as HTML
+  Parameters: {"_limit"=>"5"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."id" DESC LIMIT ?[0m  [["LIMIT", 5]]
+  ↳ app/controllers/api/v1/todos_controller.rb:11:in `index'
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 1326)
+
+
+Started GET "/api/v1/todos?_limit=25" for ::1 at 2020-12-11 01:32:55 -0500
+Processing by Api::V1::TodosController#index as HTML
+  Parameters: {"_limit"=>"25"}
+  [1m[36mTodo Load (2.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."id" DESC LIMIT ?[0m  [["LIMIT", 25]]
+  ↳ app/controllers/api/v1/todos_controller.rb:11:in `index'
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 2.3ms | Allocations: 3731)
+
+
+Started GET "/api/v1/todos?_limit=50" for ::1 at 2020-12-11 01:32:58 -0500
+Processing by Api::V1::TodosController#index as HTML
+  Parameters: {"_limit"=>"50"}
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."id" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/controllers/api/v1/todos_controller.rb:11:in `index'
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 6756)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-12-11 01:33:02 -0500
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"50", "completed"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "50"], ["completed", 0], ["created_at", "2020-12-11 06:33:02.507370"], ["updated_at", "2020-12-11 06:33:02.507370"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in `create'
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 8.9ms | Allocations: 4519)
+
+
+Started GET "/api/v1/todos?_limit=100" for ::1 at 2020-12-11 01:33:06 -0500
+Processing by Api::V1::TodosController#index as HTML
+  Parameters: {"_limit"=>"100"}
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."id" DESC LIMIT ?[0m  [["LIMIT", 100]]
+  ↳ app/controllers/api/v1/todos_controller.rb:11:in `index'
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.3ms | Allocations: 10022)
+
+
+Started GET "/api/v1/todos?_limit=50" for ::1 at 2020-12-11 01:33:13 -0500
+Processing by Api::V1::TodosController#index as HTML
+  Parameters: {"_limit"=>"50"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."id" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/controllers/api/v1/todos_controller.rb:11:in `index'
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 6755)
+
+
+Started GET "/api/v1/todos?_limit=100" for ::1 at 2020-12-11 01:33:17 -0500
+Processing by Api::V1::TodosController#index as HTML
+  Parameters: {"_limit"=>"100"}
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."id" DESC LIMIT ?[0m  [["LIMIT", 100]]
+  ↳ app/controllers/api/v1/todos_controller.rb:11:in `index'
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 0.4ms | Allocations: 10022)
+
+
