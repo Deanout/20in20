@@ -64,15 +64,25 @@ Blog Tutorial Coming Soon™
 
 These videos will be updated in the coming weekend.
 
-• Week 16 - 
+• Week 16 - Production API In Ruby on Rails 6 Done Quick With DigitalOcean App Platform
 
-• Week 17 - 
+[Video Tutorial](https://youtu.be/ZKi8AfKzfWY)
 
-• Week 18 - 
+• Week 17 - Deploy A Ruby On Rails API With PostgreSQL | Fast Vue 3 App With DigitalOcean
 
-• Week 19 - 
+[Video Tutorial](https://youtu.be/OKxn_gd3NnY)
 
-• Week 20 - 
+• Week 18 - Hotwire in Rails 6.1 - A First Look At CRUD With A Hands-On Todo List
+
+[Video Tutorial](https://youtu.be/NtTfYfWAzw0)
+
+• Week 19 - Docker Tutorial For BEGINNERS With Ruby On Rails API + Vue and Vuex Frontend
+
+[Video Tutorial](https://youtu.be/JywMquavEjU)
+
+• Week 20 - Build A Desktop App With Electron Vue And Ruby on Rails API On Digital Ocean
+
+[Video Tutorial](https://youtu.be/Yoe95FrMOwg)
 
 ...
 
